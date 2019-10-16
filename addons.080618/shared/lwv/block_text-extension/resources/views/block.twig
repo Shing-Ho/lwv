@@ -1,0 +1,12 @@
+<section id="{{ block.block_id|raw }}" class="block block-text {{ block.layout.key() }}">
+    {% if user().hasPermission('anomaly.module.pages::pages.write') %}
+        <a class="edit hidden-sm hidden-xs" href="/admin/blocks/{{ type.slug }}/edit/{{ block.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+    {% endif %}
+
+    <div class="container">
+        <div class="inner text-{{ block.alignment.key() }}">
+            {{ block.block_title.value|length ? block.block_title|raw }}
+            {{ block.body|raw }}
+        </div>
+    </div>
+</section>

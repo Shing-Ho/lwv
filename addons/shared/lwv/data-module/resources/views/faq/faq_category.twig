@@ -1,0 +1,20 @@
+<div class="filter-item panel-group category-{{ id }}" id="faq-{{ id }}">
+    <h3 class="purple">{{ category }}</h3>
+    {% for faq in faqs %}
+    <div class="panel">
+        {% if user().hasPermission('lwv.module.data::faq.manage') %}
+            <a class="edit hidden-sm hidden-xs" href="/admin/data/faqs/edit/{{ faq.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+        {% endif %}
+        {% if faq.faq_layout == 'linked' %}
+            <a class="btn btn-block collapsed" href="{{ faq.link_url }}" target="{{ faq.link_target }}">{{ faq.question }}<span class="fa fa-link"></span></a>
+        {% else %}
+            <a class="btn btn-block collapsed" data-toggle="collapse" data-parent="#faq-{{ id }}" href="#collapse{{ faq.id }}">{{ faq.question }}<span class="arrow"></span></a>
+            <div id="collapse{{ faq.id }}" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {{ faq.answer|raw }}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>

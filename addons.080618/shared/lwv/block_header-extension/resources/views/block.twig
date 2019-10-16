@@ -1,0 +1,47 @@
+{% set layout = block.layout.key %}
+{% set images = block.images().get() %}
+
+<section class="block block-header layout-{{ block.layout.key }}">
+    {% if user().hasPermission('anomaly.module.pages::pages.write') %}
+        <a class="edit hidden-sm hidden-xs" href="/admin/blocks/{{ type.slug }}/edit/{{ block.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+    {% endif %}
+
+    {% for image in images %}
+        {% if image.image %}
+            {% set image_layout = image.image_layout %}
+            {% set image_position = image.image_position %}
+
+            <div class="image image-{{ image_layout }}" style="background-image: url('{{ image(image.image).path() }}'); background-position: {{ image_position }};">
+                <div class="message-wrapper">
+                    <div class="message">
+                        {{ image.overlay()|raw }}
+                    </div>
+                </div>
+
+                {% if image_layout == 'full' %}
+                    <div id="scroll" class="hidden-xs hidden">
+                        <p>scroll</p>
+                        <span class="icon animated fadeInDown infinite"></span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+</section>
+
+{% if breadcrumb()|length and breadcrumb()|keys|last != 'Home' %}
+    <section class="breadcrumbs">
+        <div class="container">
+            <ul>
+                <li><a href="/">{{ trans("Home") }}</a></li>
+                {% for breadcrumb,href in breadcrumb() %}
+                    {% if loop.last %}
+                        <li class="active">{{ trans(breadcrumb) }}</li>
+                    {% else %}
+                        <li><a href="{{ href }}">{{ trans(breadcrumb) }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endif %}

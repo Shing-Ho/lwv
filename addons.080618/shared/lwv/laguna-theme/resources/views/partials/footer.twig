@@ -1,0 +1,32 @@
+<footer id="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                {{ variable("site","var_footer_left")|raw }}
+            </div>
+            <div class="hidden-xs hidden-sm col-md-5 col-lg-6 border">
+                <nav class="navbar">
+                    {{ menu('footer').listClass("nav navbar-nav").currentClass("current").render()|raw }}
+                </nav>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="social flex-wrapper">
+                    <div class="flex-item">
+                        {{ variable("site","var_footer_right")|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="visible-xs visible-sm">
+        <h4>Links</h4>
+        <div>
+            <nav class="navbar">
+                {{ menu('footer').listClass("nav navbar-nav").currentClass("current").render()|raw }}
+            </nav>
+        </div>
+    </div>
+</footer>
+<a href="#" id="back-to-top" class="animated zoomIn" title="Back To Top">
+    <i class="fa fa-arrow-circle-up"></i>
+</a>

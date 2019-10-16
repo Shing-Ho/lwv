@@ -1,0 +1,20 @@
+<div class="posts-widget">
+    {% for post in posts %}
+        <div class="post clearfix">
+            <div class="post-media">
+                <a href="{{ url(post.path) }}#post"><img class="img-responsive" src="{{ image(post.news_image).fit(320,200).path() }}" /></a>
+            </div>
+            <div class="post-summary">
+                <div class="wrapper">
+                    <a class="post-header" href="{{ url(post.path) }}#post">{{ post.title }}</a>
+                    <p>{{ post.news_teaser }}</p>
+                </div>
+                <a class="more" href="{{ url(post.path) }}#post">Read More</a>
+                {% if post.news_document %}
+                    &nbsp;&nbsp;<a class="more" href="{{ url(post.news_document.downloadPath) }}">Download PDF</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    <a class="btn btn-purple arrow view-all" href="/news">View All</a>
+</div>

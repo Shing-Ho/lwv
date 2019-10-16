@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <button class="close" data-dismiss="modal">
+        <span>&times;</span>
+    </button>
+    <h4 class="modal-title">{{ trans('module::message.choose_folder') }}</h4>
+</div>
+
+<div class="modal-body">
+
+    {% include "streams::modals/filter" %}
+
+    {% if not folders.isEmpty() %}
+        <ul class="nav nav-pills nav-stacked">
+            {% for folder in folders %}
+                <li class="nav-item">
+                    <a href="{{ url_to('admin/documents/documents/' ~ folder.id) }}" class="nav-link">
+                        <strong>{{ folder.path }}</strong>{% if not folder.isEnabled() %}&nbsp;&nbsp;<i class="fa fa-ban text-danger"></i>{% endif %}{% if folder.hasDocuments() %}&nbsp;&nbsp;<i class="fa fa-file-o"></i>{% endif %}{% if folder.folder_type == 'minutes' %}&nbsp;&nbsp;<i class="fa fa-legal"></i>{% endif %}
+                        <br>
+                        <small>{{ folder.description }}</small>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        {{ trans('streams::message.no_results') }}
+    {% endif %}
+</div>

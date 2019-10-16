@@ -1,0 +1,12 @@
+<section id="contact" class="block block-text full_width">
+<div class="container">
+    <div class="inner text-left">
+    <h3 class="orange">Contact Us</h3>
+        {% if website.web_contact|length %}
+            {{ website.web_contact|raw }}
+        {% else %}
+            <p>{{ club.contact|raw }}</p>
+        {% endif %}
+    </div>
+</div>
+</section>

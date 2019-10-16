@@ -1,0 +1,60 @@
+<title>{{ trans(template.breadcrumbs.all()|keys|last)|raw }}&nbsp;|&nbsp;{{ setting("streams::name") }}</title>
+
+<!-- Meta -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
+<meta name="keywords" content="{{ template.meta_keywords|join(',') }}" />
+<meta name="description" content="{{ template.meta_description }}" />
+<meta name="robots" content="index,follow" />
+<meta name="revisit-after" content="7 days"/>
+<meta name="GOOGLEBOT" content="INDEX, FOLLOW"/>
+<link rel="canonical" href="https://www.lagunawoodsvillage.com/">
+
+<!-- Facebook OG-->
+<meta property="og:title" content="{{ trans(template.breadcrumbs.all()|keys|last)|raw }}">
+<meta property="og:description" content="{{ template.meta_description }}">
+<meta property="og:site_name" content="{{ setting("streams::name") }}">
+<meta property="og:url" content="{{ request_url() }}">
+<meta property="og:image" content="">
+
+<!-- Favicons -->
+<link rel="shortcut icon" href="{{ asset_path('lwv.theme.laguna::img/favicons/favicon.ico') }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ asset_path('lwv.theme.laguna::img/favicons/apple-touch-icon.png') }}">
+<link rel="icon" type="image/png" href="{{ asset_path('lwv.theme.laguna::img/favicons/favicon-256x256.png') }}" sizes="256x256">
+<link rel="icon" type="image/png" href="{{ asset_path('lwv.theme.laguna::img/favicons/favicon-192x192.png') }}" sizes="192x192">
+<link rel="icon" type="image/png" href="{{ asset_path('lwv.theme.laguna::img/favicons/favicon-32x32.png') }}" sizes="32x32">
+<link rel="icon" type="image/png" href="{{ asset_path('lwv.theme.laguna::img/favicons/favicon-16x16.png') }}" sizes="16x16">
+
+<!-- Fonts -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600&amp;subset=latin-ext" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600&amp;subset=latin-ext" rel="stylesheet">
+
+<!-- CSS includes -->
+{% include "theme::partials/css" %}
+
+<!-- Javascript includes -->
+{{ asset_add("theme.js", "theme::js/vendor/jquery-3.1.1.min.js") }}
+{{ asset_add("theme.js", "theme::js/vendor/bootstrap.min.js") }}
+{{ asset_add("theme.js", "theme::js/vendor/bootstrap-select.min.js") }}
+{{ asset_add("theme.js", "theme::js/vendor/jquery.sameheight.js") }}
+{{ asset_add("theme.js", "theme::js/vendor/modernizr-custom.js") }}
+{{ asset_add("theme.js", "theme::js/vendor/imagesloaded.pkgd.min.js") }}
+{{ asset_add("theme.js", "theme::js/vendor/ekko-lightbox.min.js") }}
+{{ asset_add("theme.js", "theme::js/vendor/isotope.pkgd.min.js") }}
+{{ asset_add("theme.js", "theme::js/vendor/slick.js") }}
+{{ asset_add("theme.js", "theme::js/vendor/wow.min.js") }}
+{{ asset_add("theme.js", "theme::js/vendor/jPushMenu.js") }}
+{{ asset_add("theme.js", "theme::js/vendor/moment.min.js") }}
+{{ asset_add("theme.js", "theme::js/vendor/fullcalendar.min.js") }}
+{{ asset_script("theme.js") }}
+
+<!--[if lt IE 9]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+{{ constants() }}

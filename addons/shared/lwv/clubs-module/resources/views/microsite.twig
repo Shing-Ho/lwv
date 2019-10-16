@@ -1,0 +1,16 @@
+{% extends layout('lwv/clubs-module/microsite') %}
+
+{% block content %}
+    <div class="microsite">
+        {% include "lwv.module.clubs::microsite/header" %}
+        {% include "lwv.module.clubs::microsite/breadcrumbs" %}
+        {% include "lwv.module.clubs::microsite/intro" %}
+        {% include "lwv.module.clubs::microsite/contact" %}
+        {% include "lwv.module.clubs::microsite/body" %}
+        {% include "lwv.module.clubs::microsite/documents" %}
+        {% include "lwv.module.clubs::microsite/events" %}
+        {% include "lwv.module.clubs::microsite/news" %}
+        {% include "lwv.module.clubs::microsite/gallery" %}
+        {{ setting_value("lwv.module.clubs::website_footer")|raw }}
+    </div>
+{% endblock %}

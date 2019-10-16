@@ -1,0 +1,24 @@
+{% if club.documents().count() %}
+<section id="documents" class="block block-custom">
+    <div class="container">
+        <div class="folder title">
+            <h3>Documents</h3>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel folder">
+                <div class="panel-body">
+                    {% for doc in club.documents().get() %}
+                        {% if not doc.private or user().hasPermission('lwv.module.clubs::documents.private') %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <a class="document {{ doc.document.type() }}" target="_blank" href="{{ doc.view() }}">{{ doc.title }}</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

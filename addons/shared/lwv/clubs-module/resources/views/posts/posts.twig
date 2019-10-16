@@ -1,0 +1,29 @@
+{% extends layout('lwv/clubs-module/microsite') %}
+
+{% block content %}
+    {% include "lwv.module.clubs::microsite/header" %}
+    {% include "lwv.module.clubs::microsite/breadcrumbs" %}
+
+    <section class="post-wrapper news block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="post-items">
+                        {% if post %}
+                            {{ view("module::posts/partials/detail", {"post": post}) }}
+                        {% else %}
+                            {% if posts is empty  %}
+                                <h3>No matching posts found</h3>
+                            {% endif %}
+                            {{ view("module::posts/partials/summary", {"posts": posts}) }}
+                        {% endif %}
+                    </div>
+                    {{ posts.render|raw }}
+                </div>
+                <div class="col-md-3 side-xs-big side-sm-big">
+                    {{ view("module::posts/partials/sidebar", {"club": club, "sidebar": sidebar}) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

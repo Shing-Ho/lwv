@@ -1,0 +1,101 @@
+<style>
+.contact-sc span{
+    font-size: 13px; 
+    position: absolute;
+    bottom: -20px;
+ 
+}
+.contact-sc{
+    padding-right: 0px;
+}
+.goog-te-menu-value{
+        font-size: 14px !important;
+}
+ 
+
+.googletran{
+      padding-right: 0px;
+}
+</style>
+<header id="header">
+    {% if user().isAdmin and page %}
+        <a class="edit hidden-sm hidden-xs" href="/admin/pages/edit/{{ page.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+    {% endif %}
+    <div class="wrapper">
+        <a class="logo" href="/">
+            <img class="img-responsive" alt="Laguna Woods Village" src="{{ image("theme::img/logos/logo.png").path() }}" />
+        </a>
+        <div class="left pull-left hidden-xs hidden-sm">
+            <div class="top">
+                <div class="col-md-7 googletran">
+                <div id="google_translate_element"></div>
+                <script type="text/javascript">
+                    function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar,en,es,fr,hi,iw,ja,ko,zh-CN,zh-TW', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false, gaTrack: true, gaId: 'UA-104103319-1'}, 'google_translate_element');
+                    }
+                </script>
+                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                 </div>
+                <div class="col-md-5 contact-sc">
+                   {{ variable("site","var_header")|raw }}
+              </div>
+            </div>
+           
+            <div class="bottom">
+               
+          <a href="/contact?form=Code Red">  <img class="img-responsive" alt="Codered Logo" src="/coderedlogo.png"     style="width: 180px;     padding-top: 20px;
+    padding-left: 18px; ">
+        </a>
+        
+            </div>
+        </div>
+        <div class="right pull-right">
+            <div class="hidden-md hidden-lg">
+                <ul class="menu hidden-xs">
+                   
+
+                    <li>
+                        <a href="/contact">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="/residents/resident-services#guest-passes">Guest Passes</a>
+                    </li>
+                </ul>
+                <ul class="icons">
+                    <li>
+                        <a title="Search" class="search toggle-push menu-top"><i class="fa fa-search"></i></a>
+                    </li>
+                    <li>
+                        <a title="Menu" class="c-hamburger c-hamburger--htx toggle-push toggle-menu menu-right hidden-xs" data-linked="#side-menu a.toggle-push">
+                            <span>toggle menu</span>
+                        </a>
+                        <a title="Menu" class="c-hamburger c-hamburger--htx toggle-menu visible-xs" data-toggle="collapse" data-target="#mobile-menu" aria-expanded="false">
+                            <span>toggle menu</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="top hidden-xs hidden-sm">
+                <a class="btn btn-purple" style="width: 121px;" target="_blank" href="https://portal.lagunawoodsvillage.com/">Login</a><a class="btn btn-outline" href="/contact">Contact Us</a><a class="btn btn-purple" href="/residents/resident-services#guest-passes">Guest Passes</a>
+            </div>
+            <div class="bottom hidden-xs hidden-sm">
+                <div class="search-wrapper">
+                    <form action="{{ url('search') }}" method="get">
+                        <input type="text" class="form-control" placeholder="Search..." name="q" value=""/>
+                        <button class="search-bar-icon" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="divider hidden-md hidden-lg"></div>
+    </div>
+    <div class="nav hidden-xs hidden-sm">
+        <div class="container">
+            {{ menu('header').linkClass("subnav-link").currentClass("current").render()|raw }}
+        </div>
+    </div>
+    {{ variable("site","var_mega_menu")|raw }}
+</header>

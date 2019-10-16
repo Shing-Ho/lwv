@@ -1,0 +1,11 @@
+{{ form_open({'class': 'form career-search ajax', 'enctype': 'multipart/form-data', 'url': '/ajax/careers/search'}) }}
+<div class="form-group">
+    {{ form.fields.type.input|raw }}
+</div>
+<div class="form-group form-group-submit text-center">
+    <button type="submit" class="btn btn-secondary">
+        Search
+    </button>
+</div>
+
+{{ form_close() }}

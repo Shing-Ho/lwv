@@ -1,0 +1,71 @@
+<div class="row">
+{% for post in posts %}
+<div class="col-xs-12 {{ settings.sidebar ? 'col-md-6 col-sm-6' : 'col-lg-4 col-sm-6' }}">
+    <div class="post">
+        {% if post.news_image %}
+            {% if user().hasPermission('lwv.module.news::posts.manage') %}
+                <a class="edit hidden-sm hidden-xs" href="/admin/news/edit/{{ post.id }}" target="_blank">
+                    <i class="fa fa-edit"></i>
+                </a>
+            {% endif %}
+            <div class="post-media">
+                {% if post.type.slug == 'newsletter' %}
+                    {% if post.news_link|length %}
+                        <a href="{{ post.news_link }}" target="_blank"><img src="{{ image(post.news_image).fit(640,400).path() }}" /></a>
+                    {% else %}
+                        <img src="{{ image(post.news_image).fit(640,400).path() }}" />
+                    {% endif %}
+                {% else %}
+                    <a href="{{ url(post.path) }}#post"><img src="{{ image(post.news_image).fit(640,400).path() }}" /></a>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="post-entry">
+            <div class="post-header">
+                {% if post.type.slug == 'newsletter' %}
+                    {% if post.news_link|length %}
+                        <a href="{{ post.news_link }}" target="_blank">{{ post.title }}</a>
+                    {% else %}
+                        <h3>{{ post.title }}</h3>
+                    {% endif %}
+                {% else %}
+                    <a href="{{ url(post.path) }}#post">{{ post.title }}</a>
+                {% endif %}
+            </div>
+            <!-- <div class="post-meta">
+                {{ post.publish_at.format('F d, Y') }}
+            </div> -->
+            <div class="post-summary">
+                <p>{{ post.news_teaser }}</p>
+            </div>
+            {% if post.news_document %}
+                <div class="post-download">
+                    <a class="btn btn-orange" href="{{ url(post.news_document.downloadPath) }}">Download PDF</a>
+                </div>
+            {% endif %}
+            {% if post.tags.value or post.category %}
+            <div class="post-tag">
+                {% if post.category or post.tags %}
+                <span class="blue"><b>TAGS:</b> </span>
+                {% endif %}
+                {% if post.category %}
+                    {{ html_link(post.category.path, post.category.name) }}
+                {% endif %}
+                {% if post.tags %}
+                    {% for tag in post.tags.value %}
+                        <a href="/{{ setting_value('lwv.module.news::module_segment','news') }}/tag/{{ tag }}">{{ tag }}</a>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+{% if loop.index is even %}
+<div class="clearfix"></div>
+{% endif %}
+
+{% endfor %}
+</div>

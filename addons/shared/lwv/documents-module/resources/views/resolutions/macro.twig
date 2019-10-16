@@ -1,0 +1,24 @@
+{% macro contents(folder) %}
+    {% for child in folder.children().get() %}
+        {% if child.isEnabled() %}
+        <div class="sub">
+            <a class="folder collapsed" data-toggle="collapse" href="#collapse{{ child.id }}">{{ child.title }}</a>
+            <div id="collapse{{ child.id }}" class="collapse">
+                {{ _self.contents(child) }}
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+    {% for resolution in folder.resolutions() %}
+        {% if not resolution.document.private or user().hasPermission('lwv.module.documents::documents.private') %}
+            <div class="row docWrapper">
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <a class="document {{ resolution.document.document.type() }}" target="_blank" href="{{ resolution.document.view() }}">Resolution {{ resolution.number }}</a>
+                </div>
+                <div class="hidden-xs col-sm-8 col-md-9">
+                    <small>{{ resolution.summary }}<!--  [{{ resolution.document.created_at|date("M-d-Y") }}]--></small>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}

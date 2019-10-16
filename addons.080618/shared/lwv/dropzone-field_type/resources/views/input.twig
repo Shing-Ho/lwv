@@ -1,0 +1,38 @@
+{% set id = 'dz-'~random() %}
+
+{{ asset_add("scripts.js", "lwv.field_type.dropzone::js/exif.js") }}
+{{ asset_add("scripts.js", "lwv.field_type.dropzone::js/dropzone.min.js") }}
+{{ asset_add("scripts.js", "lwv.field_type.dropzone::js/upload.js",["parse"]) }}
+{{ asset_add("styles.css", "lwv.field_type.dropzone::css/dropzone.css",["parse"]) }}
+
+{% if field_type.hasValue() %}
+    <div class="dz-value">
+        {% if field_type.value.mime_type matches '/^image.*/' %}
+            <img src="{{ image(field_type.value).resize(250).path() }}" />
+        {% elseif field_type.value.mime_type matches '/^application\\/pdf/' %}
+            <img src="{{ asset_path("lwv.field_type.dropzone::img/types/pdf.png") }}" />
+            <small>{{ field_type.value.name }}</small><br />
+        {% else %}
+            <img src="{{ asset_path("lwv.field_type.dropzone::img/types/unknown.png") }}" />
+            <small>{{ field_type.value.name }}</small><br />
+        {% endif %}
+        <a href="javascript:undefined;" data-dropzone="{{ id }}" class="dz-value-remove">Remove</a>
+    </div>
+{% endif %}
+<input type="hidden" name="{{ field_type.input_name }}" data-dropzone="{{ id }}" value="{{ field_type.value ? field_type.value.id }}">
+<div id="{{ id }}" class="dropzone {{ field_type.hasValue() ? 'hidden' }}"
+     data-rules="{{ field_type.config.rules ? field_type.config.rules : 'required' }}"
+     data-max-size="{{ field_type.config.maxsize ? field_type.config.maxsize : 1 }}"
+     data-max-files="{{ field_type.config.maxfiles ? field_type.config.maxfiles : 1 }}"
+     data-max-parallel="{{ setting_value('anomaly.module.files::max_parallel_uploads', 3) }}"
+     data-message-max-exceeded="{{ field_type.config.maxfiles ? field_type.config.message-max-exceeded : ' ' }}"
+     data-message-remove="{{ field_type.config.message-remove ? field_type.config.message-remove : 'Remove' }}"
+     data-message-cancel="{{ field_type.config.message-cancel ? field_type.config.message-cancel : 'Cancel' }}"
+     data-accepted="{{ field_type.config.accepted ? field_type.config.accepted : 'image/*' }}"
+     data-allow-fallback="{{ field_type.config.allow-fallback ? '1' : '0' }}"
+     >
+    <div class="dz-default dz-message">
+        <span><i class="fa fa-upload"></i> {{ field_type.config.message ? field_type.config.message : "Click or drop files here to upload" }}</span>
+        {% if field_type.config.caption %}<br /><small>{{ field_type.config.caption }}</small>{% endif %}
+    </div>
+</div>

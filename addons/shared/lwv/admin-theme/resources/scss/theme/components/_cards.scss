@@ -1,0 +1,60 @@
+.card {
+    position: relative;
+    margin-bottom: $card-spacer-y*2;
+    @include shadow();
+
+    &.card-container {
+        box-shadow: none;
+        background: transparent;
+    }
+}
+
+.card-label {
+    color: #ffffff;
+    display: inline-block;
+    margin-bottom: $card-spacer-y/2;
+    padding: $card-spacer-y/2 ($card-spacer-x * 2);
+
+    &.card-label-primary {
+        background: $brand-info;
+    }
+
+    &.card-label-success {
+        background: $brand-info;
+    }
+
+    &.card-label-warning {
+        background: $brand-info;
+    }
+
+    &.card-label-danger {
+        background: $brand-info;
+    }
+
+    &.card-label-info {
+        background: $brand-info;
+    }
+}
+
+.card-title {
+    margin: 0;
+    color: darken($gray-light, 20%);
+
+    small {
+        color: $gray-light;
+
+        a {
+            color: darken($brand-primary,20%);
+
+            &:hover {
+                color: darken($brand-primary,40%);
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+	.card-block {
+		padding: .5em;
+	}
+}

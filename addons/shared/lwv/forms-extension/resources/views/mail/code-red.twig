@@ -1,0 +1,49 @@
+<p>New request received</p>
+<p>
+    <h3>What Can We Help You With?</h3>
+    {{ contact.interest }}<br />
+<hr/>       
+    <h3>Contact Information</h3>
+   
+     <b>Leased :</b>    <input type="radio" name="leased" {{ contact.leased==1?'checked':'' }}  disabled ><br />
+      <b>Owner Occupied :</b>     <input type="radio" name="leased" {{ contact.leased==2 ?'checked':'' }} disabled><br />
+    <b>Date:</b> {{ contact.user_date|length   ? contact.user_date : 'N/A' }}<br />
+
+    <h3>Your Informations</h3>
+    <b>Resident ID:</b> {{ contact.residentId|length ? contact.residentId : 'N/A' }}<br />
+    <b>Manor :</b> {{ contact.user_manor|length ? contact.user_manor : 'N/A' }}<br />
+    <b>Name :</b> {{ contact.user_name|length ? contact.user_name : 'N/A' }}<br />
+    <b>Email :</b> {{ contact.user_email|length ? contact.user_email : 'N/A' }}<br />
+    <b>Home Phone:</b> {{ contact.home_phone|length ? contact.home_phone : 'N/A' }}<br />
+    <b>Cell Phone:</b> {{ contact.cell_phone|length ? contact.cell_phone : 'N/A' }}<br />
+
+     <hr/>       
+     <h3>Emergency Contact  </h3> 
+
+     <b>Name:</b> {{ contact.name1|length ? contact.name1 : 'N/A' }}<br />
+     <b>Relationship:</b> {{ contact.relationship1|length ? contact.relationship1 : 'N/A' }}<br />
+     <b>Home Number:</b> {{ contact.home_number1|length ? contact.home_number1 : 'N/A' }}<br />
+     <b>Email:</b> {{ contact.email1|length ? contact.email1 : 'N/A' }}<br />
+     <b>Work Number:</b> {{ contact.work_number1|length ? contact.work_number1 : 'N/A' }}<br />
+     <b>Cell Number:</b> {{ contact.cell_number1|length ? contact.cell_number1 : 'N/A' }}<br />
+     <b>Address:</b> {{ contact.address1|length ? contact.address1 : 'N/A' }}<br />
+     <b>City:</b> {{ contact.city1|length ? contact.city1 : 'N/A' }}<br />
+     <b>State:</b> {{ contact.state1|length ? contact.state1 : 'N/A' }}<br />
+     <b>Zip:</b> {{ contact.zip_code1|length ? contact.zip_code1 : 'N/A' }}<br /> <hr/>  
+
+     <b>Name:</b> {{ contact.name2|length ? contact.name2 : 'N/A' }}<br />
+     <b>Relationship:</b> {{ contact.relationship2|length ? contact.relationship2 : 'N/A' }}<br />
+     <b>Home Number:</b> {{ contact.home_number2|length ? contact.home_number2 : 'N/A' }}<br />
+     <b>Email:</b> {{ contact.email2|length ? contact.email2 : 'N/A' }}<br />
+     <b>Work Number:</b> {{ contact.work_number2|length ? contact.work_number2 : 'N/A' }}<br />
+     <b>Cell Number:</b> {{ contact.cell_number2|length ? contact.cell_number2 : 'N/A' }}<br />
+     <b>Address:</b> {{ contact.address2|length ? contact.address2 : 'N/A' }}<br />
+     <b>City:</b> {{ contact.city2|length ? contact.city2 : 'N/A' }}<br />
+     <b>State:</b> {{ contact.state2|length ? contact.state2 : 'N/A' }}<br />
+     <b>Zip:</b> {{ contact.zip_code2|length ? contact.zip_code2 : 'N/A' }}<br /> <hr/>       
+
+    <h3>Other Imformation  </h3>
+    <b>Attorney Trustee Name:</b> {{ contact.attorneyTrusteeName|length ? contact.attorneyTrusteeName : 'N/A' }} ({{ contact.attorney_phone|length ? contact.attorney_phone : 'N/A' }})<br />
+    <b>Pet Care Contact Name:</b> {{ contact.petCareContactName|length ? contact.petCareContactName : 'N/A' }} ({{ contact.pet_phone|length ? contact.pet_phone : 'N/A' }})<br />
+    
+    <p>Sent from {{ request_ip() }}</p>

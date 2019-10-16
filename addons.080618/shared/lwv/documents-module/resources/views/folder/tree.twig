@@ -1,0 +1,59 @@
+{% import "lwv.module.documents::folder/macro" as macro %}
+{% set id = 'accordion-'~random() %}
+
+{% if folder.isEnabled() %}
+<div class="folder title">
+    <h3>{{ folder.title }}</h3>
+    {% if user().hasPermission('lwv.module.documents::documents.manage') %}
+        <a class="edit hidden-sm hidden-xs" href="/admin/documents/documents/{{ folder.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+    {% endif %}
+    {% if folder.searchable.value %}
+    <a class="search-bar-icon" title="Search {{ folder.path }}" href="/search?type=documents&path={{ folder.path }}&refer={{ request_path() }}">
+        <i class="fa fa-search"></i>
+    </a>
+    {% endif %}
+</div>
+<div class="panel-group" id="{{ id }}">
+    {% if folder.documents().count() %}
+        <div class="panel folder">
+            <div class="panel-body">
+                {% for doc in folder.documents().get() %}
+                    {% if not doc.private or user().hasPermission('lwv.module.documents::documents.private') %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <a class="document {{ doc.document.type() }}" target="_blank" href="{{ doc.view() }}">{{ doc.title }}</a>
+                                {% if doc.granicus %}
+                                    &nbsp;&mdash;&nbsp;&nbsp;<a class="video" href="{{ doc.granicus }}" target="_blank"><small><i class="fa fa-play-circle"></i>&nbsp;&nbsp;View Video</small></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    {% for child in folder.children().get() %}
+        {% if child.isEnabled() %}
+            <div class="panel folder">
+                {% if user().hasPermission('lwv.module.documents::documents.manage') %}
+                    <a class="edit hidden-sm hidden-xs" href="/admin/documents/documents/{{ child.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+                {% endif %}
+                <a class="btn btn-block collapsed {{ loop.index > 1 ? 'collapsedzzz' }}" data-toggle="collapse" data-parent="#{{ id }}" href="#{{ id }}-collapse{{ child.id }}">
+                    {{ child.title }}
+                    <span class="arrow"></span>
+                </a>
+                <div id="{{ id }}-collapse{{ child.id }}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {% if child.documents().count() and child.searchable %}
+                        <a class="search-bar-icon" title="Search {{ child.path }}" href="/search?type=documents&path={{ child.path }}&refer={{ request_path() }}">
+                            <i class="fa fa-search"></i>
+                        </a>
+                        {% endif %}
+                        {{ macro.contents(child) }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endif %}

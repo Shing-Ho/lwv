@@ -1,0 +1,31 @@
+{% extends template.layout ?: "theme::layouts/default" %}
+
+{% block content %}
+    <div class="inner">
+        <div class="container-fluid">
+            <div class="panel">
+                <div class="panel-body">
+                    <p>Use the Documents module to upload and manage documents, arrange them in folders, and render them in a variety of formats on your site using the provided plugins.</p>
+                    <h5><i class="fa fa-folder-o"></i>&nbsp;&nbsp;Folders</h5>
+                    <ul>
+                        <li>Folders can be rearranged via drag/drop.</li>
+                        <li>Disabled Folders - All child folders/documents are automatically removed from all document browser widgets site-wide.</li>
+                        <li>Searchable Folders - All documents within searchable folders are automatically indexed and searchable via the search module.</li>
+                    </ul>
+                    <h5><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;Documents</h5>
+                    <ul>
+                        <li>Documents can optionally contain one or more board resolutions (<i>Board Meeting Minutes</i>)</li>
+                        <li>Private Documents - Only visible to users / roles with the "View Private Documents" permission.</li>
+                    </ul>
+                    <h5><i class="fa fa-code"></i>&nbsp;&nbsp;Plugins</h5>
+                    <p>Documents are displayed on the site via the use of one of the plugins below.</p>
+                    <ul>
+                        <li>&#123;&#123; documents_folder('path') &#125;&#125; - Display all documents / subfolders under the specified path.</li>
+                        <li>&#123;&#123; documents_resolutions('path') &#125;&#125; - Display all resolutions under the specified path.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

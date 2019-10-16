@@ -1,0 +1,27 @@
+{
+    "name": "lwv/dropzone-field_type",
+    "type": "streams-addon",
+    "description": "Provides ajax drag / drop file uploads for forms",
+    "keywords": [
+        "streams field type",
+        "streams addon",
+        "field type"
+    ],
+    "homepage": "http://www.lagunawoodsvillage.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan McDaniel",
+            "email": "ryan@itinnovative.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "ryan@itinnovative.com"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lwv\\DropzoneFieldType\\": "src/"
+        }
+    }
+}

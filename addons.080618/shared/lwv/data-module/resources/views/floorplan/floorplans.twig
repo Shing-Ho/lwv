@@ -1,0 +1,57 @@
+<div class="filterable">
+    <div class="filters clearfix">
+        <div class="filter-group">
+            <span class="btn filter-category">Community</span>
+            <a data-filter="third" class="btn btn-filter filter" href="#">Third<span class="hidden-xs"> Laguna Hills</span></a>
+            <a data-filter="united" class="btn btn-filter filter" href="#">United<span class="hidden-xs"> Laguna Woods</span></a>
+            <a data-filter="fifty" class="btn btn-filter filter" href="#"><span class="hidden-xs"> The </span>Towers</a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="filter-group">
+            <span class="btn filter-category">Bedrooms</span>
+            <a data-filter="bedrooms1" class="btn btn-filter filter" href="#">1</a>
+            <a data-filter="bedrooms2" class="btn btn-filter filter" href="#">2</a>
+            <a data-filter="bedrooms3" class="btn btn-filter filter" href="#">3</a>
+        </div>
+        <div class="filter-group">
+            <span class="btn filter-category">Square Feet</span>
+            <a data-filter="size1" class="btn btn-filter filter" href="#">&lt;&nbsp;1000ft</a>
+            <a data-filter="size2" class="btn btn-filter filter" href="#">1000ft&nbsp;+</a>
+        </div>
+        <div class="filter-group hidden-xs">
+            <span class="btn filter-category">Parking</span>
+            <a data-filter="carport" class="btn btn-filter filter" href="#">Carport</a>
+            <a data-filter="garage" class="btn btn-filter filter" href="#">Garage</a>
+            <a data-filter="underground" class="btn btn-filter filter" href="#">Underground</a>
+        </div>
+        <div class="clearfix"></div>
+        <a data-filter="*" class="btn btn-clear filter" href="#">Clear Filters</a>
+    </div>
+    <table class="filter-container">
+        <tr>
+            <th>name</th>
+            <th class="center">sq. ft.</th>
+            <th class="center">bedrooms</th>
+            <th class="center">bathrooms</th>
+            <th>parking/spaces</th>
+        </tr>
+        {% for entry in floorplans %}
+            <tr class="filter-item {{ entry.mutual }} {{ entry.size.value < 1000 ? "size1" : "size2" }} {{ entry.parking }} bedrooms{{ entry.bedrooms }}">
+                <td class="no-th"><a class="btn btn-orange btn-block {{ entry.floorplan ? "arrow" : "disabled" }}" title="View Floorplan" {% if entry.floorplan %}href="{{ image(entry.floorplan).path() }}" data-toggle="lightbox"{% endif %}>{{ entry.name }}</a></td>
+                <!-- <td class="no-th"><a class="btn btn-orange btn-block disabled">{{ entry.name }}</a></td> -->
+                <td data-th="SQ. FT." class="center">{{ entry.size }}</td>
+                <td data-th="BEDROOMS" class="center">{{ entry.bedrooms }}</td>
+                <td data-th="BATHROOMS" class="center">{{ entry.baths }}</td>
+                <td data-th="PARKING/SPACES">{{ entry.parking|upper }}&nbsp;{{ entry.parking_size }}</td>
+                {% if user().hasPermission('lwv.module.data::floorplans.manage') %}
+                    <td>
+                        <a class="edit hidden-sm hidden-xs" href="/admin/data/floorplans/edit/{{ entry.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="no-results">
+        <p><i class="fa fa-warning"></i>No rows match your search criteria.  Modify your filter criteria above or clear filters to start over.</p>
+    </div>
+</div>

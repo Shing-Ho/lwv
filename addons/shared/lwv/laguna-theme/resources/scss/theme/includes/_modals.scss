@@ -1,0 +1,109 @@
+///////////////////////////////////////////////////////////////////////////////
+// Includes
+///////////////////////////////////////////////////////////////////////////////
+@import "variables";
+
+///////////////////////////////////////////////////////////////////////////////
+// Modals
+///////////////////////////////////////////////////////////////////////////////
+.modal {
+  z-index: 2050;
+  -webkit-overflow-scrolling: auto;
+}
+
+.ekko-lightbox.modal {
+  @include media('>=tablet') {
+    padding-left: 17px;
+  }
+
+  .modal-dialog {
+    @include media('>=tablet') {
+      width: 90%;
+      max-width: 768px;
+    }
+
+    @include media('>=desktop') {
+      width: 90%;
+      max-width: 992px;
+    }
+  }
+
+  img {
+    margin: 0 auto;
+  }
+}
+
+.modal-dialog {
+  margin: 0 auto;
+  width: 100%;
+
+  @include media('>=tablet') {
+    margin: 30px auto;
+    width: 700px;
+  }
+}
+
+.modal-content {
+  background: #fff;
+  @include css3-prefix('box-shadow','none');
+  @include css3-prefix('border-radius','0');
+  border: 0;
+}
+
+.modal-body {
+  padding: 0 20px 30px 20px;
+}
+
+.modal-body,
+.modal-header {
+  border: 0;
+}
+
+.modal-header {
+  position: relative;
+  padding: 0 20px;
+
+  .modal-title {
+    //display: none;
+
+    color: $purple;
+    margin-top: 5px;
+    line-height: 1;
+  }
+
+  h4 {
+    margin-bottom: 5px;
+  }
+
+  .close {
+    position: relative;
+    background: $blue;
+    @include opacity(1);
+    @include css3-prefix('text-shadow','none');
+    font-size: 30px;
+    line-height: 30px;
+    padding: 0 7px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: $white;
+    @include transition(all 0.2s linear);
+
+    @include media('>=tablet') {
+      margin-top: -15px;
+      margin-right: -15px;
+    }
+
+    &:hover {
+      background: lighten($blue,10%);
+    }
+  }
+}
+
+.modal-backdrop {
+  z-index: 2040;
+  background-color: #000;
+
+  &.in {
+    @include opacity(0.7);
+  }
+}

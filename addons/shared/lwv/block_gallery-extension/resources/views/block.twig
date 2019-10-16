@@ -1,0 +1,115 @@
+{% set animations = {'none' : '', 'fade' : 'wow fadeIn', 'right' : 'wow fadeInRight', 'left' : 'wow fadeInLeft', 'up' : 'wow fadeInUp'} %}
+{% set layouts = {'1' : 'col-xs-12', '2' : 'col-xs-12 col-sm-6 col-md-6', '3' : 'col-xs-12 col-sm-4 col-md-4', '4' : 'col-xs-12 col-sm-6 col-md-3'} %}
+
+{% macro modal(image) %}
+    <div id="modal-{{ image.id }}" class="modal gallery-modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"><button type="button" class="close" data-dismiss="modal">×</button></div>
+                <div class="modal-body">
+                    {% if image.modal_image %}
+                        <img class="img-responsive header" src="{{ image(image.modal_image).resize(768).path() }}" />
+                    {% endif %}
+                    {{ image.modal_body|raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% import _self as macros %}
+
+<section id="{{ block.block_id }}" class="block block-gallery layout-{{ block.layout.key }}">
+    {% if user().hasPermission('anomaly.module.pages::pages.write') %}
+        <a class="edit hidden-sm hidden-xs" href="/admin/blocks/{{ type.slug }}/edit/{{ block.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+    {% endif %}
+
+    <div class="container">
+        {% if block.body.value|length %}
+            <div class="intro">
+                {{ block.body|raw }}
+            </div>
+        {% endif %}
+        <div class="gallery {{ block.layout.key() in ['3','4'] ? "grid-gutter-10" }} {{ attribute(animations,block.animation.key()) }}" data-wow-delay="0.1s" data-wow-offset="10">
+            <div class="row">
+            {% for image in block.images().get() %}
+                {% if image.image %}
+                    <div class="{{ attribute(layouts,block.layout.key()) }}">
+                        <div class="gallery-item">
+                            <div class="item-box {{ image.image_layout }} {{ image.overlay_type }}-overlay {{ image.overlay_background }}">
+                                {% if user().hasPermission('anomaly.module.pages::pages.write') %}
+                                    <a class="edit hidden-sm hidden-xs" href="/admin/blocks/{{ type.slug }}/image/edit/{{ image.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+                                {% endif %}
+
+                                {% if image.image_layout in ['linked'] %}
+                                    <a class="{{ image.image_layout }}" href="{{ image.link_url }}" target="{{ image.link_target }}">
+                                        <img class="item-container" src="{{ image(image.image).resize(768).path() }}" />
+
+                                        {% if image.overlay|length %}
+                                            <div class="item-mask">
+                                                <div class="item-overlay {{ image.overlay_position }}">{{ image.overlay()|raw }}</div>
+                                            </div>
+                                        {% endif %}
+                                    </a>
+                                {% elseif image.image_layout in ['content'] %}
+                                    <a class="{{ image.image_layout }}" data-title="{{ image.title }}" data-toggle="modal" href="#modal-{{ image.id }}">
+                                        <img class="item-container" src="{{ image(image.image).resize(768).path() }}" />
+
+                                        {% if image.overlay|length %}
+                                            <div class="item-mask">
+                                                <div class="item-overlay {{ image.overlay_position }}">{{ image.overlay()|raw }}</div>
+                                            </div>
+                                        {% endif %}
+                                    </a>
+                                {% elseif image.image_layout in ['video','lightbox'] %}
+                                    <a class="{{ image.image_layout }}" data-title="{{ image.title }}" data-width="1280" data-toggle="lightbox" href="{{ image.image_layout == 'video' ? image.link_url : image(image.image).path() }}">
+                                        <img class="item-container" src="{{ image(image.image).resize(768).path() }}" />
+
+                                        {% if image.overlay|length %}
+                                            <div class="item-mask">
+                                                <div class="item-overlay {{ image.overlay_position }}">{{ image.overlay()|raw }}</div>
+                                            </div>
+                                        {% endif %}
+                                    </a>
+                                {% else %}
+                                    <div class="{{ image.image_layout }}">
+                                        <img class="item-container" src="{{ image(image.image).resize(768).path() }}" />
+
+                                        {% if image.overlay|length %}
+                                            <div class="item-mask">
+                                                <div class="item-overlay {{ image.overlay_position }}">{{ image.overlay()|raw }}</div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            {% if image.body|length %}
+                                <div class="item-caption">
+                                    {{ image.body()|raw }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if block.layout.key() in ['2'] and loop.index is even %}
+                    <div class="clearfix visible-sm-block visible-md-block visible-lg-block"></div>
+                {% endif %}
+                {% if block.layout.key() in ['3'] and loop.index is divisible by(3) %}
+                    <div class="clearfix visible-md-block visible-lg-block"></div>
+                {% endif %}
+                {% if block.layout.key() in ['4'] and loop.index is divisible by(4) %}
+                    <div class="clearfix visible-md-block visible-lg-block"></div>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% for image in block.images().get() %}
+        {% if image.image_layout in ['content'] %}
+            {{ macros.modal(image) }}
+        {% endif %}
+    {% endfor %}
+</section>

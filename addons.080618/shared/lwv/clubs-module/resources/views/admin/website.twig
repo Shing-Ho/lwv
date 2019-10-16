@@ -1,0 +1,50 @@
+{% extends template.layout ?: "theme::layouts/default" %}
+
+{% block content %}
+    <div class="inner">
+        <div class="container-fluid">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3>{{ club.title }}</h3>
+                    <p>Manage your club website using the tools provided below.  Refer to the infographic below for information regarding what sections of your club website are administerable.</p>
+                    <div class="row">
+                        <div class="col-24 col-sm-12" style="margin-bottom: 10px;">
+                            <a class="btn btn-sm btn-primary d-block" href="/admin/clubs/websites/edit/{{ club.id }}">
+                                <i class="fa fa-pencil "></i>
+                                Site Content
+                            </a>
+                        </div>
+                        <div class="col-24 col-sm-12" style="margin-bottom: 10px;">
+                            <a class="btn btn-sm btn-primary d-block" href="/admin/clubs/websites/documents/{{ club.id }}">
+                                <i class="fa fa-file-pdf-o"></i>
+                                Documents
+                            </a>
+                        </div>
+                        <div class="col-24 col-sm-12" style="margin-bottom: 10px;">
+                            <a class="btn btn-sm btn-primary d-block" href="/admin/clubs/websites/posts/{{ club.id }}">
+                                <i class="fa fa-newspaper-o"></i>
+                                News &amp; Events
+                            </a>
+                        </div>
+                        <div class="col-24 col-sm-12" style="margin-bottom: 10px;">
+                            <a class="btn btn-sm btn-primary d-block" href="/admin/clubs/websites/photos/{{ club.id }}">
+                                <i class="fa fa-image"></i>
+                                Photo Gallery
+                            </a>
+                        </div>
+                        <div class="col-24 col-sm-12" style="margin-bottom: 10px;">
+                            <a class="btn btn-sm btn-default d-block" href="{{ club.preview() }}" target="_blank">
+                                <i class="fa fa-globe"></i>
+                                Preview Site
+                            </a>
+                        </div>
+
+                    </div>
+                    <!-- <div class="text-center" style="margin-top: 30px; border-top: 1px solid #000; padding-top: 50px;">
+                        <img class="img-fluid" src="{{ image("module::img/club-website-infographic.jpg").path() }}" />
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

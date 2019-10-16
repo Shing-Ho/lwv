@@ -1,0 +1,400 @@
+<div class="form-wrapper">
+    <div class="alert alert-info confirmation hidden animated fadeIn">
+        {{ setting_value('lwv.extension.forms::contact_confirmation')|raw }}
+    </div>
+    {{ form_open({'id': 'contact', 'class': 'form contact ajax', 'url': form.options.url}) }}
+    <div class="form-section">
+        <div class="form-group interest">
+            <label>What Can We Help You With?</label>
+            {{ form.fields.interest.input|raw }}
+        </div>
+    </div>
+    <div class="form-section fields">
+
+             <div class="row">
+              
+             <div class="col-xs-2 col-sm-2 col-md-6">
+                <div class="form-group  work_number1 hidden">
+                    <label> Manor&nbspis   </label>
+                 &nbsp  &nbsp  &nbsp
+                    <label> Leased </label>
+                    <input type="radio"   name="leased"  value="1"  >
+                     &nbsp  &nbsp  &nbsp
+                    <label>Owner&nbspOccupied  </label>
+                    <input type="radio"   name="leased"  value="2" >
+                </div>
+            </div>
+              
+
+              <div class="col-xs-12 col-sm-12 col-md-3 pull-right">
+                <div class="form-group  work_number1 hidden">
+                
+                     <input value="" class="form-control" name="user_date" type="date" placeholder="Select Date"   value="30-11-2018"
+        >
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-1 pull-right">
+                <div class="form-group  work_number1 hidden">
+                    <label> &nbsp&nbsp&nbsp&nbsp&nbspDate  </label> 
+                   
+                </div>
+            </div>
+              
+           </div>
+
+              <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group emergency hidden">   <br/> 
+                   <h3 class="purple"> Your Information </h3>
+                    
+                 </div>
+            </div>
+            </div>
+           
+            <div class="row border-forms form-group emergency">
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group  residentId hidden">
+                    <label>Resident ID  </label>
+                    {{ form.fields.residentId.input|raw }}
+                </div>
+            </div>
+
+
+
+            <div class="col-xs-12 col-sm-12 col-md-6 ">
+                <div class="form-group  user_manor hidden">
+                    <label>Manor# </label>
+                    {{ form.fields.user_manor.input|raw }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group  user_name hidden">
+                    <label> Name* </label>
+                    {{ form.fields.user_name.input|raw }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group user_email hidden">
+                    <label> Email* </label>
+                    {{ form.fields.user_email.input|raw }}
+                    <small class="animated fadeIn form-alert"> &nbsp</small>
+                </div>
+            </div>
+          </div>
+</div>
+             <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group home_phone hidden">
+                    <label> Home Phone* </label>
+                    {{ form.fields.home_phone.input|raw }}
+                </div>
+            </div>
+
+             <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group  cell_phone hidden">
+                    <label> Cell Phone* </label>
+                    {{ form.fields.cell_phone.input|raw }}
+                </div>
+            </div>
+
+           </div>
+           
+              <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group emergency hidden">   <br/> 
+                   <h3 class="purple"> Emergency Contact(s) </h3>
+                    
+                 </div>
+            </div>
+            </div>
+
+             <div class="row border-forms  form-group emergency">
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group name1 hidden">
+                    <label> Name  </label>
+                    {{ form.fields.name1.input|raw }}
+                </div>
+            </div>
+
+             
+             <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group relationship1 hidden">
+                    <label> Relationship  </label>
+                    {{ form.fields.relationship1.input|raw }}
+                </div>
+            </div>
+
+             <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group home_number1 hidden">
+                    <label> Home Number  </label>
+                    {{ form.fields.home_number1.input|raw }}
+                </div>
+            </div>
+           <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group email1 hidden">
+                    <label> Email  </label>
+                    {{ form.fields.email1.input|raw }}
+                </div>
+            </div>
+             <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group work_number1 hidden">
+                    <label> Work Number  </label>
+                    {{ form.fields.work_number1.input|raw }}
+                </div>
+            </div>
+
+             <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group cell_number1 hidden">
+                    <label> Cell Number </label>
+                    {{ form.fields.cell_number1.input|raw }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group address1 hidden">
+                    <label> Address </label>
+                    {{ form.fields.address1.input|raw }}
+                </div>
+            </div>
+
+           <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group city1 hidden">
+                    <label> City </label>
+                    {{ form.fields.city1.input|raw }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group state1 hidden">
+                    <label> State </label>
+                    {{ form.fields.state1.input|raw }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group zip_code1 hidden">
+                    <label> Zip </label>
+                    {{ form.fields.zip_code1.input|raw }}
+                </div>
+            </div>
+       <div class="col-xs-12 col-sm-12 col-md-12"> 
+        <div class="form-group emergency hidden ">
+       <br/> 
+       </div>
+        </div>
+
+              <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group name2 hidden">
+                    <label> Name  </label>
+                    {{ form.fields.name2.input|raw }}
+                </div>
+            </div>
+
+             
+             <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group relationship2 hidden">
+                    <label> Relationship  </label>
+                    {{ form.fields.relationship2.input|raw }}
+                </div>
+            </div>
+
+             <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group home_number2 hidden">
+                    <label> Home Number  </label>
+                    {{ form.fields.home_number2.input|raw }}
+                </div>
+            </div>
+              <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group email2 hidden">
+                    <label> Email  </label>
+                    {{ form.fields.email2.input|raw }}
+                </div>
+            </div>
+             <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group work_number2 hidden">
+                    <label> Work Number  </label>
+                    {{ form.fields.work_number2.input|raw }}
+                </div>
+            </div>
+
+             <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group cell_number2 hidden">
+                    <label> Cell Number </label>
+                    {{ form.fields.cell_number2.input|raw }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group address2 hidden">
+                    <label> Address </label>
+                    {{ form.fields.address2.input|raw }}
+                </div>
+            </div>
+
+           <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group city2 hidden">
+                    <label> City </label>
+                    {{ form.fields.city2.input|raw }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group state2 hidden">
+                    <label> State </label>
+                    {{ form.fields.state2.input|raw }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group zip_code2 hidden">
+                    <label> Zip </label>
+                    {{ form.fields.zip_code2.input|raw }}
+                </div>
+            </div>
+            </div>
+          
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group other hidden">   <br/> 
+                       <h3 class="purple"> Other Information  </h3>
+                  
+                 </div>
+            </div>
+            <div class="row border-forms  form-group emergency">
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group attorneyTrusteeName hidden">
+                    <label> Attorney or Trustee Name</label>
+                    {{ form.fields.attorneyTrusteeName.input|raw }}
+                </div>
+            </div>
+             
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group attorney_phone hidden">
+                    <label> Phone</label>
+                    {{ form.fields.attorney_phone.input|raw }}
+                </div>
+            </div>
+   <div class="col-xs-12 col-sm-12 col-md-12">
+   </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group petCareContactName hidden">
+                    <label> Pet Care Contact Name </label>
+                    {{ form.fields.petCareContactName.input|raw }}
+                </div>
+            </div>
+            
+              <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group pet_phone hidden">
+                    <label> Phone</label>
+                    {{ form.fields.pet_phone.input|raw }}
+                </div>
+            </div>
+            </div> 
+
+
+             <div class="row border-forms   ">
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group  first_name hidden">
+                    <label>First Name*</label>
+                    {{ form.fields.first_name.input|raw }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group  last_name hidden">
+                    <label>Last Name*</label>
+                    {{ form.fields.last_name.input|raw }}
+                </div>
+            </div>
+     
+         
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group  email hidden">
+                    <label>Email*</label>
+                    {{ form.fields.email.input|raw }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 ">
+                <div class="form-group phone hidden">
+                    <label>Phone*</label>
+                    {{ form.fields.phone.input|raw }}
+                </div>
+            </div>
+       
+    <div class="form-section fields">
+        <!-- Trading Post -->
+        <div class="form-group manor hidden">
+            <label>Manor Number*</label>
+            {{ form.fields.manor.input|raw }}
+        </div>
+        <div class="form-group address hidden">
+            <label>Street Address*</label>
+            {{ form.fields.address.input|raw }}
+        </div>
+        <div class="form-group ad_phone hidden">
+            <label>Phone Number (To be read on-air)*</label>
+            {{ form.fields.ad_phone.input|raw }}
+        </div>
+        <div class="form-group ad_type hidden">
+            <label>Ad Type*</label>
+            {{ form.fields.ad_type.input|raw }}
+        </div>
+        <div class="form-group ad_description hidden">
+            <div>
+                <label>Ad Description To Be Read On-Air*</label>
+                {{ form.fields.ad_description.input|raw }}
+            </div>
+        </div>
+        <div class="form-group photos hidden">
+            <label>Photos</label>
+            {{ form.fields.photos.input|raw }}
+        </div>
+        <!-- Subscribe -->
+         <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group subscribe hidden">
+
+            
+                <label>Which Updates Would You Like To Receive?*</label>
+                {{ form.fields.subscribe.input|raw }}
+            </div>
+        </div>
+        <!-- Media Services -->
+         <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group service hidden">
+            <label>Which Service Are You Interested In?*</label>
+            {{ form.fields.service.input|raw }}
+        </div>
+        </div>
+        <!-- General -->
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="form-group message hidden">
+            <div>
+                <label>How Can We Help You?*</label>
+                {{ form.fields.message.input|raw }}
+            </div>
+          </div>
+        </div>
+        </div>
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class=" form-group-submit">
+        <input type="submit" class="btn btn-primary">
+    </div>
+  </div>
+    {{ form.fields.spam.input|raw }}
+    {{ form_close() }}
+</div>
+
+<style>
+   .border-forms{
+    display: inline-block;
+    padding: 20px;
+    margin: .25rem;
+    background-color: #f5f5f5;
+    }
+ 
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+</style>
+{{ form_json("contact") }}

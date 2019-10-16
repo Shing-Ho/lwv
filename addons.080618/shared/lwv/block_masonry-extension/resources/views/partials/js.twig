@@ -1,0 +1,39 @@
+<script type="text/javascript">
+    (function ($) {
+        "use strict";
+        $(document).ready(function () {
+            var block = $('section#{{ block.block_id }}');
+            var container = $(block).find('.masonry');
+            var layout = $(block).data('layout') || 'fitRows';
+            var filter = (container.data('filter').length) ? '.'+container.data('filter') : false;
+
+            $(container).imagesLoaded(function () {
+                var $grid = $(container).removeClass("hidden").isotope({
+                    itemSelector: '.masonry-item',
+                    layoutMode: 'masonry',
+                    masonry: {
+                        // use outer width of grid-sizer for columnWidth
+                        columnWidth: 312,
+                        gutter: 10,
+                        isFitWidth: !0
+                    },
+                    filter: filter
+                });
+            });
+
+            $(block).find('.masonry-filters').on('click', 'a.filter', function (e) {
+                e.preventDefault();
+                var $grid = $(this).closest('.masonry-filters').next();
+                var filterValue = $(this).attr('data-filter');
+
+                if (filterValue != '*') {
+                    filterValue = '.' + filterValue;
+                }
+
+                $grid.isotope({filter: filterValue});
+                $(this).closest('.masonry-filters').find('.active').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    })(jQuery);
+</script>

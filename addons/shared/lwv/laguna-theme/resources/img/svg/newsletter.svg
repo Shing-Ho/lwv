@@ -1,0 +1,9 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 397.4">
+    <defs>
+        <style>.cls-1{fill:#fff;fill-rule:evenodd;}</style>
+    </defs>
+    <title>LWV_Newsletter</title>
+    <path class="cls-1"
+          d="M153.64,619.64V222.25h23l242.19.1v-.1h22.84v397.4h-288Zm238.52-52.29H311.72V544.41l80.33.1.1,0v22.86Zm-104,0H204.32V498l83.72.33a.38.38,0,0,0,.12-.06v69.1Zm104-46.41H311.72V498l80.33.11.1,0v22.86Zm0-46.41H204.32V451.58l187.57.1.26,0v22.86Zm0-46.41H204.32v-23l187.57.11.26,0v22.86Zm0-46.41H204.32V358.76l187.57.11.26,0v22.86ZM204.32,272.63H392.16v54.61H204.32V272.63ZM418.71,596.8l.09-351.6H176.59L176.5,596.7l242.21.1Z"
+          transform="translate(-153.64 -222.25)"/>
+</svg>

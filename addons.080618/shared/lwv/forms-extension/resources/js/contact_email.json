@@ -1,0 +1,34 @@
+{
+  "General Inquiry": {
+    "subject": "New Inquiry Received",
+    "email": "ryan@itinnovative.com"
+  },
+  "Security": {
+    "subject": "New Security Inquiry Received",
+    "email": "ryan@itinnovative.com"
+  },
+  "Recreation & Amenities": {
+    "subject": "New Recreation Inquiry Received",
+    "email": "ryan@itinnovative.com"
+  },
+  "Resident Services": {
+    "subject": "New Resident Inquiry Received",
+    "email": "ryan@itinnovative.com"
+  },
+  "Transportation Services": {
+    "subject": "New Transportation Received",
+    "email": "ryan@itinnovative.com"
+  },
+  "Maintenance": {
+    "subject": "New Maintenance Inquiry Received",
+    "email": "ryan@itinnovative.com"
+  },
+  "Sales & Leasing": {
+    "subject": "New Sales Inquiry Received",
+    "email": "ryan@itinnovative.com"
+  },
+  "Subscribe": {
+    "subject": "New Subscribe Requests Received",
+    "email": "ryan@itinnovative.com"
+  }
+}

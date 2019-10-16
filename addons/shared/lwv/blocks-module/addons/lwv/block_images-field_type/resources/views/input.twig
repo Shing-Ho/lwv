@@ -1,0 +1,17 @@
+{{ asset_add("scripts.js", "streams::js/table/jquery-sortable.js") }}
+{{ asset_add("scripts.js", "lwv.module.blocks::js/weight_blocks.js") }}
+{{ asset_add("scripts.js", 'lwv.field_type.block_images::js/input.js') }}
+
+{% if field_type.message %}
+    {{ view("lwv.field_type.block_images::partials/message", {'message': field_type.message}) }}
+{% endif %}
+
+{% if field_type.block %}
+    <p>
+        <a class="btn btn-sm btn-info" href="/admin/blocks/{{ field_type.extension.slug }}/image/create/{{ field_type.block.id }}"><i class="fa fa-plus"></i> Image</a>
+    </p>
+{% endif %}
+
+{% if not field_type.images is empty %}
+    {{ view("lwv.field_type.block_images::partials/images", {'field_type': field_type}) }}
+{% endif %}

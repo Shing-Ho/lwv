@@ -1,0 +1,12 @@
+<table class="simple">
+    {% for contact in contacts %}
+        <tr>
+            <td class="no-th">{{ contact.name|raw }}</td>
+            <td class="no-th text-right">
+                <a href="tel:{{ contact.phone|raw }}"><i class="fa fa-phone orange hidden-sm hidden-md hidden-lg">&nbsp;&nbsp;</i>{{ contact.phone|raw }}</a>
+                {% if contact.email|length %}&nbsp;&nbsp;<a href="mailto:{{ contact.email|raw }}"><i class="fa fa-envelope-o orange"></i></a>{% endif %}
+            </td>
+
+        </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,50 @@
+<div class="team-results container-fluid">
+    {% if jobs is empty %}
+        <div class="padded text-center">
+            {{ setting_value('lwv.module.careers::careers_no_results')|raw }}
+        </div>
+    {% else %}
+    <div class="team-results-title">
+        Search Results:
+    </div>
+    <div class="filters hidden-xs">
+        <ul class="container-filter department-filter">
+            <li><a href="#" class="filter active" data-filter="*">Show All</a></li>
+            {% for filter in jobs.filters() %}
+                <li><a href="#" class="filter" data-filter="{{ str_slug(filter) }}">{{ filter }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="team-results-items row">
+        {% for job in jobs %}
+            <div id="result-{{ mt_rand() }}" class="col-xs-12 col-sm-12 col-md-6 result-item {{ str_slug(job.department) }}">
+                <div class="team-result">
+                    <div class="team-result-position">
+                        <div class="team-result-position-inner">{{ job.type|raw }}</div>
+                    </div>
+                    <h3 class="black">{{ job.job_title|raw }}</h3>
+                    <div class="team-result-content">
+                        <div class="summary">
+                            <p>
+                                {{ job.summary|raw }}
+                            </p>
+                            <a class="btn btn-blue detail arrow" href="#">View Details</a>
+                        </div>
+                        <div class="body hidden">
+                            {{ job.body|raw }}
+                            <a class="btn btn-orange apply arrow" href="#">Apply</a>
+                        </div>
+                        <div class="application animated fadeIn hidden">
+                            <div class="form-wrapper">
+                                {{ form('career_application').get().setFieldValue('job',job.id)|raw }}
+                                {% include "lwv.module.careers::alerts/confirmation" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>

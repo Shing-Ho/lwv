@@ -1,0 +1,49 @@
+{% import "lwv.module.documents::resolutions/macro" as macro %}
+{% set id = 'accordion-'~random() %}
+
+{% if folder.isEnabled() %}
+    <div class="folder title">
+        <h3>Resolutions</h3>
+        {% if folder.searchable.value %}
+            <a class="search-bar-icon" title="Search {{ folder.path }}" href="/search?type=documents&path={{ folder.path }}&refer={{ request_path() }}">
+                <i class="fa fa-search"></i>
+            </a>
+        {% endif %}
+    </div>
+    <div class="panel-group" id="{{ id }}">
+        {% for child in folder.children().get() %}
+            {% if child.isEnabled() %}
+                <div class="panel folder folder-{{ child.id }}">
+                    <a class="btn btn-block collapsed {{ loop.index > 1 ? 'collapsedzzz' }}" data-toggle="collapse" data-parentzzz="#{{ id }}" href="#{{ id }}-collapse{{ child.id }}">
+                        {{ child.title }}
+                        <span class="arrow"></span>
+                    </a>
+                    <div id="{{ id }}-collapse{{ child.id }}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            {{ macro.contents(child) }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% if folder.documents().count() %}
+            <div class="panel folder folder-{{ folder.id }}">
+                <div class="panel-body">
+                    {% for resolution in folder.resolutions() %}
+                        {% if not resolution.document.private or user().hasPermission('lwv.module.documents::documents.private') %}
+                            <div class="row docWrapper">
+                                <div class="col-xs-12 col-sm-4 col-md-3">
+                                    <a class="document {{ resolution.document.document.type() }}" target="_blank" href="{{ resolution.document.view() }}">Resolution {{ resolution.number }}</a>
+                                </div>
+                                <div class="hidden-xs col-sm-8 col-md-9">
+                                    <small>{{ resolution.summary }}<!--  [{{ resolution.document.created_at|date("M-d-Y") }}]--></small>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+{% endif %}

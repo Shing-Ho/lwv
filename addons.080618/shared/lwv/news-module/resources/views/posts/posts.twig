@@ -1,0 +1,49 @@
+{% extends layout('lwv/news-module/posts') %}
+
+{% block content %}
+    {{ setting_value('lwv.module.news::header')|raw }}
+
+    {% if breadcrumb()|length and breadcrumb()|keys|last != 'Home' %}
+        <section class="breadcrumbs">
+            <div class="container">
+                <ul>
+                    <li><a href="/">{{ trans("Home") }}</a></li>
+                    {% for breadcrumb,href in breadcrumb() %}
+                        {% if loop.last %}
+                            <li class="active">{{ trans(breadcrumb) }}</li>
+                        {% else %}
+                            <li><a href="{{ href }}">{{ trans(breadcrumb) }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    {% endif %}
+
+    {{ content.intro|raw }}
+    <section id="post" class="post-wrapper news block">
+        <div class="container">
+            <div class="row">
+                <div class="{{ settings.sidebar ? 'col-md-9' : 'col-xs-12' }}">
+                    <div class="post-items">
+                        {% if post %}
+                            {{ view("module::posts/partials/detail", {"post": post}) }}
+                        {% else %}
+                            {% if posts is empty  %}
+                                <h3>No matching posts found</h3>
+                            {% endif %}
+                            {{ view("module::posts/partials/summary", {"posts": posts, "settings": settings}) }}
+                        {% endif %}
+                    </div>
+                    {{ posts.render|raw }}
+                </div>
+                {% if settings.sidebar %}
+                <div class="col-md-3 side-xs-big side-sm-big">
+                    {{ view("module::posts/partials/sidebar", {"posts": posts, "settings": settings, "sidebar": sidebar}) }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    {{ content.footer|raw }}
+{% endblock %}

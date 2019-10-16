@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    {% block metadata deferred %}
+    {% include "theme::partials/metadata" %}
+    {% endblock %}
+</head>
+
+<body class="{{ page.slug }}">
+{% include "theme::partials/search" %}
+{% include "theme::partials/header" %}
+{% include "theme::partials/sidebar" %}
+
+<!-- Page -->
+{% block content %}{% endblock %}
+
+{% include "theme::partials/footer" %}
+{% include "theme::partials/js" %}
+{{ variable("site","var_tracking")|raw }}
+</body>
+</html>

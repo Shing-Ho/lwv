@@ -1,0 +1,27 @@
+{
+    "name": "lwv/news-module",
+    "type": "streams-addon",
+    "description": "A versatile news manager.",
+    "keywords": [
+        "streams",
+        "module",
+        "posts"
+    ],
+    "homepage": "http://www.lagunawoodsvillage.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan McDaniel",
+            "email": "ryan@itinnovative.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "ryan@itinnovative.com"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lwv\\NewsModule\\": "src/"
+        }
+    }
+}

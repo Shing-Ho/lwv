@@ -1,0 +1,29 @@
+<p>New request received</p>
+<p>
+    <h3>What Can We Help You With?</h3>
+    {{ contact.interest }}<br />
+
+    <h3>Contact Information</h3>
+    <b>First Name:</b> {{ contact.first_name|length ? contact.first_name : 'N/A' }}<br />
+    <b>Last Name:</b> {{ contact.last_name|length ? contact.last_name : 'N/A' }}<br />
+    <b>Email:</b> {{ contact.email|length ? contact.email : 'N/A' }}<br />
+    <b>Phone:</b> {{ contact.phone|length ? contact.phone : 'N/A' }}<br />
+    <b>Manor Number:</b> {{ contact.manor|length ? contact.manor : 'N/A' }}<br />
+    <b>Address:</b> {{ contact.address|length ? contact.address : 'N/A' }}<br />
+
+    <h3>Advertisement</h3>
+    <b>Type:</b> {{ contact.ad_type|length ? contact.ad_type : 'N/A' }}<br />
+    <b>Phone Number:</b> {{ contact.ad_phone|length ? contact.ad_phone : 'N/A' }}<br />
+    <b>Description:</b><br />
+    {{ contact.ad_description|markdown }}
+</p>
+{% if photos|length %}
+<p>
+    <h3>Photos</h3>
+    {% for photo in photos %}
+        <a href="{{ photo.url() }}" target="_blank">{{ photo.title }}</a><br />
+    {% endfor %}
+</p>
+{% endif %}
+
+<p>Sent from {{ request_ip() }}</p>

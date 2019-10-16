@@ -1,0 +1,14 @@
+{{ asset_add("theme.css", "theme::scss/vendor/normalize.css") }}
+{{ asset_add("theme.css", "theme::scss/bootstrap/bootstrap.scss", ["parse"]) }}
+{{ asset_add("theme.css", "theme::scss/vendor/bootstrap-select.scss") }}
+{{ asset_add("theme.css", "theme::scss/vendor/ekko-lightbox.min.css") }}
+{{ asset_add("theme.css", "theme::scss/vendor/fullcalendar.css") }}
+{{ asset_add("theme.css", "theme::scss/vendor/font-awesome.css", ["parse"]) }}
+{{ asset_add("theme.css", "theme::scss/vendor/slick.scss") }}
+{{ asset_add("theme.css", "theme::scss/vendor/animate.css") }}
+{{ asset_add("theme.css", "theme::scss/theme/lwv.scss") }}
+{{ asset_style("theme.css") }}
+
+{% for style in asset_styles("styles.css") %}
+    {{ style|raw }}
+{% endfor %}

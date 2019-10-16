@@ -1,0 +1,32 @@
+{
+    "name": "lwv/search-module",
+    "type": "streams-addon",
+    "description": "Search Module.",
+    "keywords": [
+        "streams",
+        "module",
+        "search"
+    ],
+    "homepage": "http://www.lagunawoodsvillage.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan McDaniel",
+            "email": "ryan@itinnovative.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "ryan@itinnovative.com"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lwv\\SearchModule\\": "src/",
+            "Zend\\Stdlib\\": "vendor/zendframework/zend-stdlib/src/"
+        },
+        "psr-0": {
+            "Mmanos\\Search\\": "vendor/mmanos/laravel-search/src/",
+            "ZendSearch": "vendor/zendframework/zendsearch/library/"
+        }
+    }
+}

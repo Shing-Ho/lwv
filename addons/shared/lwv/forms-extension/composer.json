@@ -1,0 +1,26 @@
+{
+    "name": "lwv/forms-extension",
+    "type": "streams-addon",
+    "keywords": [
+        "streams",
+        "extension"
+    ],
+    "homepage": "http://www.lagunawoodsvillage.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan McDaniel",
+            "email": "ryan@itinnovative.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "ryan@itinnovative.com"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lwv\\FormsExtension\\": "src/",
+            "Lwv\\SpamFieldType\\": "addons/lwv/spam-field_type/src/"
+        }
+    }
+}

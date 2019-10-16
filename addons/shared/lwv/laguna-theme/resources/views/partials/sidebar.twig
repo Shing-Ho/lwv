@@ -1,0 +1,19 @@
+<section id="side-menu" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right hidden-xs">
+    {% if user().isAdmin %}
+        <a class="edit hidden-sm hidden-xs" href="/admin/navigation" target="_blank"><i class="fa fa-edit"></i></a>
+    {% endif %}
+
+    <a title="Menu" class="c-hamburger c-hamburger--htx toggle-push menu-right" data-linked="#header a.toggle-push.menu-right">
+        <span>toggle menu</span>
+    </a>
+    <div class="side-menu-block">
+        <h5 class="">Links</h5>
+        {{ menu('main').currentClass("current").childListClass('dropdown').dropdownClass('has-children').render()|raw }}
+    </div>
+
+    {{ variable("site","var_sidebar")|raw }}
+</section>
+<section id="mobile-menu" class="collapse">
+    {{ menu('main').currentClass("current").render()|raw }}
+    {{ variable("site","var_header")|raw }}
+</section>

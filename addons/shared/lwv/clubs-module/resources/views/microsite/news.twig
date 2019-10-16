@@ -1,0 +1,74 @@
+{% if news.count() %}
+<section id="news" class="block block-slider">
+    <div class="container">
+        <div class="intro">
+            <h2 class="purple">Club News</h2>
+        </div>
+    </div>
+
+    <div class="carousel-container container fadeIn" data-wow-delay="0.1s" data-wow-offset="10">
+        <div class="carousel-items">
+        {% for post in news %}
+            <div class="carousel-item">
+                <div class="post">
+                    <div class="post-media">
+                        <a href="/{{ post.path }}"><img src="{{ post.post_image }}"></a>
+                    </div>
+
+                    <div class="post-entry">
+                        <div class="post-header">
+                            <a href="/{{ post.path }}">{{ post.title }}</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="container">
+        <a class="btn btn-purple arrow view-all" href="/{{ setting_value('lwv.module.clubs::module_root', 'clubs') }}/{{ club.slug }}/news">View All</a>
+    </div>
+
+    <script type="text/javascript">
+        $('section#news .carousel-items').slick({
+            dots: false,
+            arrows: true,
+            infinite: true,
+            slidesToShow: parseInt(3),
+            slidesToScroll: parseInt(3),
+            autoplay: true,
+            autoplaySpeed: parseInt(8000),
+            responsive: [
+                {
+                    breakpoint: 1300,
+                    settings: {
+                        slidesToShow: parseInt(3),
+                        slidesToScroll: parseInt(3)
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: parseInt(2),
+                        slidesToScroll: parseInt(2)
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: parseInt(1),
+                        slidesToScroll: parseInt(1)
+                    }
+                },
+            ]
+        });
+    </script>
+
+    <style type="text/css">
+        #news .slick-prev, #news .slick-next {
+            top: 42%;
+        }
+    </style>
+</section>
+{% endif %}

@@ -1,0 +1,20 @@
+{% extends template.layout ?: "theme::layouts/default" %}
+
+{% block content %}
+    <div class="inner">
+        <div class="container-fluid">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3>Streams</h3>
+                    <p>The below custom streams are currently available to you in the Data Module.</p>
+                    {% for stream in streams %}
+                        <a href="/admin/data/{{ stream.slug }}"><i class="fa fa-database"></i>&nbsp;&nbsp;{{ trans(stream.name) }}</a>
+                        <p>
+                            <i>{{ trans("lwv.module.data::stream."~stream.slug~".description") }}</i>
+                        </p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

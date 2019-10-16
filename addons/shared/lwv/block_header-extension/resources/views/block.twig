@@ -1,0 +1,334 @@
+{% set layout = block.layout.key %}
+{% set images = block.images().get() %}
+<style>
+ /* W3.CSS 4.12 November 2018 by Jan Egil and Borge Refsnes */
+
+ 
+.w3-btn,
+.w3-button {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+.w3-disabled,
+.w3-btn:disabled,
+.w3-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.3
+}
+.w3-disabled *,
+:disabled * {
+  pointer-events: none
+}
+.w3-btn.w3-disabled:hover,
+.w3-btn:disabled:hover {
+  box-shadow: none
+}
+.w3-badge,
+.w3-tag {
+  background-color: #000;
+  color: #fff;
+  display: inline-block;
+  padding-left: 8px;
+  padding-right: 8px;
+  text-align: center
+}
+.w3-badge {
+  border-radius: 50%
+}
+.w3-ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0
+}
+.w3-ul li {
+  padding: 8px 16px;
+  border-bottom: 1px solid #ddd
+}
+.w3-ul li:last-child {
+  border-bottom: none
+}
+.w3-tooltip,
+.w3-display-container {
+  position: relative
+}
+.w3-tooltip .w3-text {
+  display: none
+}
+.w3-tooltip:hover .w3-text {
+  display: inline-block
+}
+.w3-ripple:active {
+  opacity: 0.5
+}
+.w3-ripple {
+  transition: opacity 0s
+}
+.w3-input {
+  padding: 8px;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 100%
+}
+.w3-select {
+  padding: 9px 0;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc
+}
+.w3-dropdown-click,
+.w3-dropdown-hover {
+  position: relative;
+  display: inline-block;
+  cursor: pointer
+}
+.w3-dropdown-hover:hover .w3-dropdown-content {
+  display: block
+}
+.w3-dropdown-hover:first-child,
+.w3-dropdown-click:hover {
+  background-color: #ccc;
+  color: #000
+}
+.w3-dropdown-hover:hover > .w3-button:first-child,
+.w3-dropdown-click:hover > .w3-button:first-child {
+  background-color: #ccc;
+  color: #000
+}
+.w3-dropdown-content {
+  cursor: auto;
+  color: #000;
+  background-color: #fff;
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  margin: 0;
+  padding: 0;
+  z-index: 1
+}
+ 
+  
+  
+.w3-display-topright {
+  position: absolute;
+  right: 0;
+  top: 0
+}
+.w3-display-bottomleft {
+  position: absolute;
+  left: 0;
+  bottom: 0
+}
+.w3-display-bottomright {
+  position: absolute;
+  right: 0;
+  bottom: 0
+}
+.w3-display-middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.w3-display-left {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(0%, -50%);
+  -ms-transform: translate(-0%, -50%)
+}
+.w3-display-right {
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translate(0%, -50%);
+  -ms-transform: translate(0%, -50%)
+}
+.w3-display-topmiddle {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%)
+}
+.w3-display-bottommiddle {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%)
+}
+.w3-display-container:hover .w3-display-hover {
+  display: block
+}
+.w3-display-container:hover span.w3-display-hover {
+  display: inline-block
+}
+.w3-display-hover {
+  display: none
+}
+.w3-display-position {
+  position: absolute
+}
+.w3-circle {
+  border-radius: 50%
+}
+ 
+ 
+ 
+.w3-tiny {
+  font-size: 10px!important
+}
+.w3-small {
+  font-size: 12px!important
+}
+.w3-medium {
+  font-size: 15px!important
+}
+.w3-large {
+  font-size: 18px!important
+}
+.w3-xlarge {
+  font-size: 24px!important
+}
+.w3-xxlarge {
+  font-size: 36px!important
+}
+.w3-xxxlarge {
+  font-size: 48px!important
+}
+.w3-jumbo {
+  font-size: 64px!important
+}
+.w3-left-align {
+  text-align: left!important
+}
+.w3-right-align {
+  text-align: right!important
+}
+.w3-justify {
+  text-align: justify!important
+}
+.w3-center {
+  text-align: center!important
+}
+.w3-border-0 {
+  border: 0!important
+}
+.w3-border {
+  border: 1px solid #ccc!important
+}
+ 
+ 
+ 
+.mySlides {display:none}
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:13px;width:13px;padding:0}
+.w3-badge { background-color: #8f70b2 !important; width: 20px;
+    height: 20px; }
+.w3-white{ border: 3px solid #8f70b2 !important;
+                     background: transparent !important;  }
+                     .w3-hover-text-khaki{
+                       display:none;
+                     }
+.w3-white, .w3-hover-white:hover {
+  color: #000!important;
+    background: transparent !important;
+}
+.w3-section {
+      margin-bottom: 116px!important;
+}
+</style>
+<section class="block block-header layout-{{ block.layout.key }}">
+    {% if user().hasPermission('anomaly.module.pages::pages.write') %}
+        <a class="edit hidden-sm hidden-xs" href="/admin/blocks/{{ type.slug }}/edit/{{ block.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+    {% endif %}
+
+    {% for image in images %}
+        {% if image.image %}
+            {% set image_layout = image.image_layout %}
+            {% set image_position = image.image_position %}
+
+            <div class="image image-{{ image_layout }} {{ block.layout.key }}" style="background-image: url('{{ image(image.image).path() }}'); background-position: {{ image_position }};">
+                <div class="message-wrapper">
+                    <div class="message">
+                        {{ image.overlay()|raw }}
+                    </div>
+                </div>
+
+                {% if image_layout == 'full' %}
+                    <div id="scroll" class="hidden-xs hidden">
+                        <p>scroll</p>
+                        <span class="icon animated fadeInDown infinite"></span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+ 
+    <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100% ;z-index: 5;">
+ 
+     <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+    <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+      {% for image in images %}
+      <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv({{ loop.index }})"></span>
+      {% endfor %}
+  </div>
+        
+</section>
+
+{% if breadcrumb()|length and breadcrumb()|keys|last != 'Home' %}
+    <section class="breadcrumbs">
+        <div class="container">
+            <ul>
+                <li><a href="/">{{ trans("Home") }}</a></li>
+                {% for breadcrumb,href in breadcrumb() %}
+                    {% if loop.last %}
+                        <li class="active">{{ trans(breadcrumb) }}</li>
+                    {% else %}
+                        <li><a href="{{ href }}">{{ trans(breadcrumb) }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endif %}
+ 
+ <script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("slideshow");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-white", "");
+  }
+  x[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " w3-white";
+}
+
+setInterval(function(){  plusDivs(1) },10000); 
+ 
+ 
+</script>
+

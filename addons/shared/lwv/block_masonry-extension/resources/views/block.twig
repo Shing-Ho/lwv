@@ -1,0 +1,97 @@
+{% macro image(image) %}
+    {% set width = setting_value('lwv.extension.block_masonry::masonry_width', 768) %}
+    {% set height = setting_value('lwv.extension.block_masonry::masonry_height', 768) %}
+
+    {% if image.size == 'm' %}
+        {% if image.image %}<img class="item-container img-responsive" src="{{ image(image.image).fit(width,height/2).path() }}" />{% endif %}
+    {% else %}
+        {% if image.image %}<img class="item-container img-responsive" src="{{ image(image.image).fit(width,height).path() }}" />{% endif %}
+    {% endif %}
+
+    {% if image.overlay|length %}
+        <div class="item-mask">
+            <div class="item-overlay bottom">{{ image.overlay()|raw }}</div>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro modal(image) %}
+    <div id="modal-{{ image.id }}" class="modal masonry-modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"><button type="button" class="close" data-dismiss="modal">×</button></div>
+                <div class="modal-body">
+                    {% if image.modal_image %}
+                        <img class="img-responsive header" src="{{ image(image.modal_image).resize(768).path() }}" />
+                    {% endif %}
+                    {{ image.body()|raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% import _self as macros %}
+
+<section id="{{ block.block_id }}" class="block block-masonry layout-{{ block.layout.key }}" data-layout="{{ block.layout.key }}">
+    {% if user().hasPermission('anomaly.module.pages::pages.write') %}
+        <a class="edit hidden-sm hidden-xs" href="/admin/blocks/{{ type.slug }}/edit/{{ block.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+    {% endif %}
+
+    <div class="container">
+        {% if block.body.value|length %}
+            <div class="intro">
+                {{ block.body|raw }}
+            </div>
+        {% endif %}
+
+        {% if block.filters() is not empty %}
+            <ul class="masonry-filters clearfix">
+                {% for filter in block.filters() %}
+                    <li>
+                        <a data-filter="{{ filter.key }}" class="filter btn btn-filter" href="#">{{ filter.value }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <div class="masonry hidden wow fadeIn" data-filter="{{ block.filter_default }}" data-wow-delay="0.1s" data-wow-offset="10">
+            {% for image in block.images().get() %}
+                {% if image.image %}
+                    <div class="masonry-item {{ image.size }} {{ image.tags() }}">
+                        <div class="item-box {{ image.image_layout }} {{ image.overlay_background }} animated-overlay">
+                            {% if user().hasPermission('anomaly.module.pages::pages.write') %}
+                                <a class="edit hidden-sm hidden-xs" href="/admin/blocks/{{ type.slug }}/image/edit/{{ image.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+                            {% endif %}
+
+                            {% if image.image_layout in ['linked'] %}
+                                <a class="{{ image.image_layout }}" href="{{ image.link_url }}" target="{{ image.link_target }}">
+                                    {{ macros.image(image) }}
+                                </a>
+                            {% elseif image.image_layout in ['content'] %}
+                                <a class="{{ image.image_layout }}" data-title="{{ image.title }}" data-toggle="modal" href="#modal-{{ image.id }}">
+                                    {{ macros.image(image) }}
+                                </a>
+                            {% elseif image.image_layout in ['video','lightbox'] %}
+                                <a class="{{ image.image_layout }}" data-title="{{ image.title }}" data-width="1280" data-toggle="lightbox" href="{{ image.image_layout == 'video' ? image.link_url : image(image.image).path() }}">
+                                    {{ macros.image(image) }}
+                                </a>
+                            {% else %}
+                                <div class="{{ image.image_layout }}">
+                                    {{ macros.image(image) }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% for image in block.images().get() %}
+        {% if image.image_layout in ['content'] %}
+            {{ macros.modal(image) }}
+        {% endif %}
+    {% endfor %}
+
+    {% include "lwv.extension.block_masonry::partials/js" %}
+</section>

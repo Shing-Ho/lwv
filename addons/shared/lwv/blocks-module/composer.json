@@ -1,0 +1,28 @@
+{
+    "name": "lwv/blocks-module",
+    "type": "streams-addon",
+    "keywords": [
+        "streams",
+        "module"
+    ],
+    "homepage": "http://www.lagunawoodsvillage.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan McDaniel",
+            "email": "ryan@itinnovative.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "ryan@itinnovative.com"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lwv\\BlocksModule\\": "src/",
+            "Lwv\\BlocksPageHandlerExtension\\": "addons/lwv/blocks_page_handler-extension/src/",
+            "Lwv\\BlocksFieldType\\": "addons/lwv/blocks-field_type/src/",
+            "Lwv\\BlockImagesFieldType\\": "addons/lwv/block_images-field_type/src/"
+        }
+    }
+}

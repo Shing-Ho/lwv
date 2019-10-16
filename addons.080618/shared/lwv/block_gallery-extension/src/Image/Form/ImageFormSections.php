@@ -1,0 +1,63 @@
+<?php namespace Lwv\BlockGalleryExtension\Image\Form;
+
+use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
+
+/**
+ * Class ImageFormSections
+ *
+ * @package Lwv\BlockGalleryExtension\Image\Form
+ */
+class ImageFormSections
+{
+
+    /**
+     * Handle the form sections
+     * 
+     * @param ImageFormBuilder $builder
+     */
+    public function handle(ImageFormBuilder $builder)
+    {
+        $builder->setSections(
+            [
+                'general' => [
+                    'title'  => 'Image Fields',
+                    'fields' => function (ImageFormBuilder $builder) {
+                        return array_map(
+                            function (FieldType $field) {
+                                return $field->getField();
+                            },
+                            array_filter(
+                                $builder->getFormFields()->base()->all(),
+                                function (FieldType $field) {
+                                    if (in_array($field->getField(),['link_url','link_target'])) {
+                                        return false;
+                                    }
+                                    return true;
+                                }
+                            )
+                        );
+                    }
+                ],
+                'layout' => [
+                    'title'  => 'Layout Specific Fields',
+                    'fields' => function (ImageFormBuilder $builder) {
+                        return array_map(
+                            function (FieldType $field) {
+                                return $field->getField();
+                            },
+                            array_filter(
+                                $builder->getFormFields()->base()->all(),
+                                function (FieldType $field) {
+                                    if (in_array($field->getField(),['link_url','link_target'])) {
+                                        return true;
+                                    }
+                                    return false;
+                                }
+                            )
+                        );
+                    }
+                ],
+            ]
+        );
+    }
+}

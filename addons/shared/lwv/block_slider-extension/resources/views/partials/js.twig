@@ -1,0 +1,34 @@
+<script type="text/javascript">
+    $('section#{{ block.block_id }} .carousel-items').slick({
+        dots: {{ block.dots.key == 'yes' ? 'true' : 'false' }},
+        arrows: {{ block.arrows.key == 'yes' ? 'true' : 'false' }},
+        infinite: {{ block.infinite.key == 'yes' ? 'true' : 'false' }},
+        slidesToShow: parseInt({{ block.widescreen.value }}),
+        slidesToScroll: parseInt({{ block.widescreen.value }}),
+        autoplay: {{ block.autoscroll.value|length and block.autoscroll.value > 0 ? 'true' : 'false' }},
+        autoplaySpeed: parseInt({{ block.autoscroll.value|length ? block.autoscroll.value : 0 }}),
+        responsive: [
+            {
+                breakpoint: 1300,
+                settings: {
+                    slidesToShow: parseInt({{ block.desktop.value }}),
+                    slidesToScroll: parseInt({{ block.desktop.value }})
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: parseInt({{ block.tablet.value }}),
+                    slidesToScroll: parseInt({{ block.tablet.value }})
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: parseInt({{ block.phone.value }}),
+                    slidesToScroll: parseInt({{ block.phone.value }})
+                }
+            },
+        ]
+    });
+</script>

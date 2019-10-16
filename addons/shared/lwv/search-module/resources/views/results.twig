@@ -1,0 +1,259 @@
+<script src="/app/lwv/assets/public/jquery.twbsPagination.js"></script>
+<div class="row">
+             <div class="col-md-4">
+               <div class="post-header">
+                 <h2 class="purple" >Search results</h2>
+                
+             </div>
+            </div>
+            <div class="col-md-4">
+
+            {{ view("lwv.module.search::form", {"query": query}) }}
+            </div>
+            <div class="col-md-4 ">
+             
+             
+               <p class="pull-right">
+                  <span class="purple phones"><i class="fa fa-volume-control-phone" aria-hidden="true"></i></span>  Got a Question?  
+                <a href="tel:949-597-4600">(949)-597-4600</a> 
+               </p>
+            </div>
+
+           </div>
+
+            <div class="row">
+              <div class="col-md-4">
+               <span class="narrw">NARROW RESULTS</span>
+
+               <table class="table table-bordered search-view"  >
+      <thead>
+      <tr>
+        
+        <th colspan="2" class="head-search" > All results ({{ inf.news_count
+                                                              +inf.amenities_count
+                                                              +inf.residents_count
+                                                              +inf.events_count
+                                                              +inf.document_count
+                                                              +inf.others_count
+                                                           }}) </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td ><a href="/search?q={{query.q}}&category=news" class="{{ query.category=="news"?"active-cls":"" }}"> News  ({{(inf.news_count)}}) </a> </td>
+        <td class="{{ query.category=="news"?"active-cls":"" }}"> <i class="fa fa-newspaper-o" aria-hidden="true"></i> </td>
+         
+      </tr>
+         <tr>
+        <td>  <a href="/search?q={{query.q}}&category=amenities" class="{{ query.category=="amenities"?"active-cls":"" }}"> Amenities ({{(inf.amenities_count)}})  </a> </td>
+        <td class="{{ query.category=="amenities"?"active-cls":"" }}"> <i class="fa fa-simplybuilt" aria-hidden="true"></i> </td>
+      
+      </tr>
+     
+       <tr>
+        <td  >  <a class="{{ query.category=="residents"?"active-cls":"" }}" href="/search?q={{query.q}}&category=residents"> Residents ({{(inf.residents_count)}})  </a> </td>
+        <td class="{{ query.category=="residents"?"active-cls":"" }}"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> </td>
+      
+      </tr>
+         <tr>
+        <td  > <a href="/search?q={{query.q}}&category=events" class="{{ query.category=="events"?"active-cls":"" }}"> Events ({{(inf.events_count)}}) </a> </td>
+        <td  class="{{ query.category=="events"?"active-cls":"" }}"> <i class="fa fa-calendar-o" aria-hidden="true"></i> </td>
+      
+      </tr>
+       <tr>
+        <td > <a href="/search?q={{query.q}}&category=document" class="{{ query.category=="document"?"active-cls":"" }}"> Documents ({{(inf.document_count)}})  </a> </td>
+        <td class="{{ query.category=="document"?"active-cls":"" }}"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> </td>
+      
+      </tr>
+      <tr>
+        <td> <a href="/search?q={{query.q}}&category=page"  class="{{ query.category=="page"?"active-cls":"" }}">  Pages ({{(inf.others_count)}}) </a> </td>
+        <td class="{{ query.category=="page"?"active-cls":"" }}"> <i class="fa fa-paper-plane" aria-hidden="true"></i> </td>
+      
+      </tr>
+      
+    </tbody>
+  </table>
+              </div>
+              <div class="col-md-8">
+
+              <div class="search-results">
+    {% if query.q %}
+            <p class="count">
+                {{ inf.news_count
+                                                              +inf.amenities_count
+                                                              +inf.residents_count
+                                                              +inf.events_count
+                                                              +inf.document_count
+                                                              +inf.others_count
+                                                           }} results for "{{ query.q }}"
+            </p>
+    {% endif %}
+    {% if results|length %}
+      <div class="col-md-12">
+                <p class="pagecounts-up"> SHOWING  {{ count(results) }} of {{ inf.news_count
+                                                              +inf.amenities_count
+                                                              +inf.residents_count
+                                                              +inf.events_count
+                                                              +inf.document_count
+                                                              +inf.others_count
+                                                           }}  </p> <br/>  
+                                                          </div>
+            {% for result in results %}
+             
+          
+                                                             <div class="row">
+                                                          <div class="col-md-12">
+                {{ view("lwv.module.search::partials/result", {"result": result}) }}
+                </div>
+                </div>
+            {% endfor %}
+    {% endif %}
+     <div class="box-footer clearfix">
+      <div class="col-md-3">
+              <span class="pagecounts"> SHOWING  {{ count(results) }} of {{ inf.news_count
+                                                              +inf.amenities_count
+                                                              +inf.residents_count
+                                                              +inf.events_count
+                                                              +inf.document_count
+                                                              +inf.others_count
+                                                           }}  </span>
+                                                           </div>
+                                                            <div class="col-md-9">
+              <ul class="pagination pagination-sm no-margin pull-right"></ul>
+              </div>
+            </div>
+</div>
+              </div>
+            </div>
+ 
+
+ 
+<style>
+
+.narrw {
+      font-size: 14px;   	
+}
+.search-results .result .title{
+	    color: #8f70b2;
+	    text-decoration: none;
+          font-size: 26px;
+}
+p.excerpt {
+	line-height: 1.8;
+  font-size: 17px;
+      margin-left: 40px !important;
+}
+p.excerpt-link{
+	line-height: 2;
+  font-size: 17px;
+      margin-left: 40px !important;
+}
+.pagecounts{
+          text-transform: uppercase;
+    color: #8f70b2;
+    font-size: 13px;
+    margin-left: -15px;
+    margin-top: 30px;
+    position: absolute;
+}
+.search-view a {
+   font-size: 19px !important;
+}
+.pagecounts-up{
+       text-transform: uppercase;
+    font-size: 13px;
+    margin-left: -15px;
+    position: absolute;
+    margin-top: -15px;
+}
+.count {
+   text-transform: uppercase;
+       color: #8f70b2;
+}
+.active-cls{
+  color: #ff2424;
+}
+td a {
+  text-decoration: none;
+}
+.result{
+
+      border-bottom: 1px solid #959595;
+      padding-bottom: 30px;
+}
+.head-search {
+    background-color: #8f70b2;
+    color:#fff;
+        text-transform: none;
+}
+
+table td{
+    border: none !important;
+}
+table {
+  color: #8f70b2;
+  width: 50% !important;
+}
+.phones{
+     font-size: 25px;
+}
+
+.amenities{
+        content: "\f215" !important;
+}
+.residents{
+        content: "\f2be" !important;
+}
+.document{
+        content: "\f1c1" !important;
+}
+.page{
+        content: "\f1d8" !important;
+}
+ul.pagination li.disabled a{
+  background-color:#fff;
+  color: #8f70b2;
+}
+
+ul.pagination li.active a{
+      background-color: #8f70b2;
+    color: #fff;
+}
+
+ul.searchul{
+      padding-left: 0px;
+      padding-right: 15px;
+          list-style: none;
+}
+ul.searchul li:before{
+  content: "";
+}
+ul.pagination li.page-item {
+    background-color: #fff !important; 
+    color: #fff;
+}
+
+.search-view thead > tr > th{
+ border: 1px solid #8f70b2 !important; 
+}
+.search-view tr{
+    border-top: 1px solid #8f70b2;
+    border-bottom: 1px solid #8f70b2;
+    border-left: 1px solid #8f70b2;
+    border-right: 1px solid #8f70b2;
+}
+</style>
+ 
+<script> 
+    var search="{{query.q}}";
+    $('.pagination').twbsPagination({
+    totalPages: Math.ceil("{{pages.total/10}}"),
+    startPage:parseInt("{{pages.currentPage}}"),
+    initiateStartPageClick:false,
+        visiblePages: 6,
+        onPageClick: function (event, page) { 
+        location.href='/search?q='+search+'&page='+page;
+        currentpage = page;
+      }
+    });
+ </script>

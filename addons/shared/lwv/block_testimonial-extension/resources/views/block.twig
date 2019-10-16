@@ -1,0 +1,23 @@
+<section id="{{ block.block_id }}" class="block block-testimonial text-center" style="background-image: url('{{ image(block.background).path() }}');">
+    {% if user().hasPermission('anomaly.module.pages::pages.write') %}
+            <a class="edit hidden-sm hidden-xs" href="/admin/blocks/{{ type.slug }}/edit/{{ block.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+    {% endif %}
+    <div class="container">
+        <div class="testimonials-container">
+            {% for testimonial in block.testimonials() %}
+                <div class="testimonial">
+                    <div class="container-icon"></div>
+                    <p>"{{ testimonial.testimonial }}"</p>
+                    <div class="author">
+                        - {{ testimonial.testimonial_name }}
+                    </div>
+
+                    {% if block.link_url.value|length %}
+                        <a class="btn btn-blue" href="{{ block.link_url }}" class="btn">Read More</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% include "lwv.extension.block_testimonial::partials/js" %}
+</section>

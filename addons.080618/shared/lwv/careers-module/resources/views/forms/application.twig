@@ -1,0 +1,34 @@
+{{ form_open({'id': 'application-'~mt_rand(), 'class': 'form career-apply ajax', 'url': form.options.url}) }}
+<div class="form-section">
+    <div class="form-group name">
+        <label>Name*</label>
+        {{ form.fields.name.input|raw }}
+    </div>
+    <div class="form-group email">
+        <label>Email*</label>
+        {{ form.fields.email.input|raw }}
+    </div>
+    <div class="form-group phone">
+        <label>Phone*</label>
+        {{ form.fields.phone.input|raw }}
+    </div>
+    <div class="form-group cover_letter">
+        <label>Cover Letter</label>
+        {{ form.fields.cover_letter.input|raw }}
+    </div>
+</div>
+
+<div class="form-section">
+    <div class="form-group attachments">
+        {{ form.fields.attachments.input|raw }}
+    </div>
+</div>
+{{ form.fields.job.input|raw }}
+
+<div class="form-group form-group-submit">
+    <button type="submit" class="btn btn-primary">
+        Submit
+    </button>
+</div>
+{{ form.fields.spam.input|raw }}
+{{ form_close() }}

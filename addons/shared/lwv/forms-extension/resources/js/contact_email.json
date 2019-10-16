@@ -1,0 +1,83 @@
+{
+  "General Inquiry": {
+    "subject": "New Inquiry Received",
+    "email": "info@vmsinc.org"
+  },
+  "Advertising": {
+    "subject": "New Advertising Received",
+    "email": "info@vmsinc.org"
+  },
+  "Code Red": {
+    "subject": "New Code Red Received",
+    "email": "info@vmsinc.org"
+  },
+  "Docent Tour": {
+    "subject": "New Docent Tour Received",
+    "email": "docent@vmsinc.org"
+  },
+  "Financial Services": {
+    "subject": "New Financial Services Received",
+    "email": "residentservices@vmsinc.org"
+  },
+  "General Managers Office": {
+    "subject": "New General Managers Office Received",
+    "email": "Generalmanager@vmsinc.org"
+  },
+  "Lost & Found": {
+    "subject": "New Lost & Found Received",
+    "email": "lostandfound@vmsinc.org"
+  },
+  "Maintenance": {
+    "subject": "New Maintenance Received",
+    "email": "residentservices@vmsinc.org"
+  },
+  "Media Inquiries": {
+    "subject": "New Media Inquiries Received",
+    "email": "info@vmsinc.org"
+  },
+
+  "Media Services": {
+    "subject": "New Media Services Received",
+    "email": "Pual.ortiz@vmsinc.org"
+  },
+  "Recreation & Amenities": {
+    "subject": "New Recreation & Amenities Received",
+    "email": "recreation@vmsinc.org"
+  },
+  "Reservations": {
+    "subject": "New Reservations Received",
+    "email": "recreation@vmsinc.org"
+  },
+  "Resident Services": {
+    "subject": "New Resident Services Received",
+    "email": "residentservices@vmsinc.org"
+  },
+  "Sales & Leasing": {
+    "subject": "New Sales & Leasing Received",
+    "email": "sales@vmsinc.org"
+  },
+  "Security Services": {
+    "subject": "New Security Services Received",
+    "email": "security.assistant@vmsinc.org"
+  },
+  "Social Services": {
+    "subject": "New Social Services Received",
+    "email": "security.assistant@vmsinc.org"
+  },
+  "Subscribe": {
+    "subject": "New Subscribe Received",
+    "email": "noreply@vmsinc.org"
+  },
+  "Suggestion Box": {
+    "subject": "New Suggestion Box Received",
+    "email": "sugestionbox@vmsinc.org"
+  },
+  "Trading Post": {
+    "subject": "New Trading Post Received",
+    "email": "trading.post@vmsinc.org"
+  },
+  "Transportation Services": {
+    "subject": "New Transportation Services Received",
+    "email": "ride@vmsinc.org"
+  }
+}

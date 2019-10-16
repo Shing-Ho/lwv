@@ -1,0 +1,20 @@
+{% extends template.layout ?: "theme::layouts/default" %}
+
+{% block content %}
+    <div class="inner">
+        <div class="container-fluid">
+            <div class="panel">
+                <div class="panel-body">
+                    <p>Blocks are accessed directly from within the <a href="/admin/pages">Pages Module</a>.  Add a Block field type to your page type to access &amp; manage it's blocks.</p>
+                    <h3>Installed Block Types</h3>
+                    <p>New block type support is installed via block type extensions.  The below block type extensions are installed and available.</p>
+                    {% for type in types %}
+                        <i class="{{ type.icon }}"></i> {{ trans(type.name) }}
+                        <p><i>{{  trans(type.description) }}</i></p>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

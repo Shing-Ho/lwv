@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>{{ setting("streams::name") }}</title>
+        <description>News</description>
+        <link>{{ url() }}</link>
+        <atom:link href="{{ url_current() }}" rel="self" type="application/rss+xml"/>
+        {% for post in posts %}
+            <item>
+                <title>{{ post.title }}</title>
+                {% if post.news_document %}
+                    <enclosure url="{{ post.news_document.url() }}" length="{{ post.news_document.size }}" type="{{ post.news_document.mime_type }}" />
+                {% elseif post.news_image %}
+                    <enclosure url="{{ post.news_image.url() }}" length="{{ post.news_image.size }}" type="image/jpeg" />
+                {% endif %}
+
+                <description>{{ post.news_teaser }}</description>
+                <pubDate>{{ post.publish_at.rfc }}</pubDate>
+                <link>{{ url(post.path) }}</link>
+                <guid isPermaLink="true">{{ url(post.path) }}</guid>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>

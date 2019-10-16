@@ -1,0 +1,29 @@
+{% set id = 'accordion-'~random() %}
+
+<div class="folder title">
+    <h3>{{ title }}</h3>
+</div>
+<div class="panel-group" id="{{ id }}">
+    {% for category in categories %}
+        <div class="panel folder">
+            {% if user().hasPermission('lwv.module.news::posts.manage') %}
+                <a class="edit hidden-sm hidden-xs" href="/admin/news?filter_category={{ category.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+            {% endif %}
+            <a class="btn btn-block collapsed" data-toggle="collapse" data-parent="#{{ id }}" href="#{{ id }}-collapse{{ category.id }}">
+                {{ category.title }}
+                <span class="arrow"></span>
+            </a>
+            <div id="{{ id }}-collapse{{ category.id }}" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {% for post in category.posts().get() %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <a class="news {{ icon }}" href="{{ url(post.path()) }}#post">{{ post.title }}</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

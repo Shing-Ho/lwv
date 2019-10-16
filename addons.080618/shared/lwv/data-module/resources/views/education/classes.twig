@@ -1,0 +1,77 @@
+{% set icons = {
+    'general': 'fa-university',
+    'music': 'fa-music',
+    'health': 'fa-heartbeat',
+    'language': 'fa-comments-o',
+    'art': 'fa-paint-brush',
+    'film': 'fa-film',
+    'photography': 'fa-camera-retro',
+    }
+%}
+
+{% set clubhouses = {
+    'community-center': '/amenities/clubhouses/community-center',
+    'clubhouse1': '/amenities/clubhouses/clubhouse1',
+    'clubhouse2': '/amenities/clubhouses/clubhouse2',
+    'performing-arts-center': '/amenities/clubhouses/performing-arts-center',
+    'clubhouse4': '/amenities/clubhouses/clubhouse4',
+    'clubhouse5': '/amenities/clubhouses/clubhouse5',
+    'clubhouse6': '/amenities/clubhouses/clubhouse6',
+    'clubhouse7': '/amenities/clubhouses/clubhouse7',
+    'library': '/amenities/clubhouses/library',
+    }
+%}
+
+
+<div class="filterable">
+    <div class="filters clearfix">
+        <h5 class="black">clubhouse</h5>
+        <div class="filter-group">
+            {% if 'community-center' in locations %}<a data-filter="community-center" class="btn btn-filter filter" href="#">Community Center</a>{% endif %}
+            {% if 'clubhouse1' in locations %}<a data-filter="clubhouse1" class="btn btn-filter filter" href="#">Clubhouse 1</a>{% endif %}
+            {% if 'clubhouse2' in locations %}<a data-filter="clubhouse2" class="btn btn-filter filter" href="#">Clubhouse 2</a>{% endif %}
+            {% if 'performing-arts-center' in locations %}<a data-filter="performing-arts-center" class="btn btn-filter filter" href="#">Performing Arts Center</a>{% endif %}
+            {% if 'clubhouse4' in locations %}<a data-filter="clubhouse4" class="btn btn-filter filter" href="#">Clubhouse 4</a>{% endif %}
+            <!-- <div class="clearfix visible-sm"></div> -->
+            {% if 'clubhouse5' in locations %}<a data-filter="clubhouse5" class="btn btn-filter filter" href="#">Clubhouse 5</a>{% endif %}
+            {% if 'clubhouse6' in locations %}<a data-filter="clubhouse6" class="btn btn-filter filter" href="#">Clubhouse 6</a>{% endif %}
+            {% if 'clubhouse7' in locations %}<a data-filter="clubhouse7" class="btn btn-filter filter" href="#">Clubhouse 7</a>{% endif %}
+            {% if 'library' in locations %}<a data-filter="library" class="btn btn-filter filter" href="#">Library</a>{% endif %}
+            {% if 'lessons' in locations %}<a data-filter="lessons" class="btn btn-filter filter" href="#">Lessons</a>{% endif %}
+        </div>
+        <div class="clearfix"></div>
+        <a data-filter="*" class="btn btn-clear filter" href="#">Clear Filters</a>
+    </div>
+    <table class="filter-container">
+        <tr>
+            <th>Class</th>
+            <th>Location</th>
+            <th>Cost</th>
+        </tr>
+        {% for entry in classes %}
+            <tr class="filter-item {{ entry.clubhouse }}">
+                <td class="no-th">
+                    <i class="fa {{ attribute(icons, entry.class_category.key) }} orange"></i>&nbsp;&nbsp;<b>{{ entry.name }}</b><br />
+                    {{ entry.schedule|raw }}
+                </td>
+                <td data-th="LOCATION">
+                    {% if attribute(clubhouses, entry.clubhouse.key) %}
+                        <a href="{{ attribute(clubhouses, entry.clubhouse.key) }}">{{ entry.clubhouse.value|raw }}</a>
+                    {% endif %}
+                </td>
+                <td data-th="COST">
+                    {{ entry.cost|length ? entry.cost|raw : 'No Charge' }}
+                </td>
+
+                {% if user().hasPermission('lwv.module.data::clubs.manage') %}
+                    <td>
+                        <a class="edit hidden-sm hidden-xs" href="/admin/data/education/edit/{{ entry.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="no-results">
+        <p><i class="fa fa-warning"></i>No rows match your search criteria.  Modify your filter criteria above or clear filters to start over.</p>
+    </div>
+</div>

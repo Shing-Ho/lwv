@@ -1,0 +1,29 @@
+<section id="intro" class="block block-text full_width">
+    <div class="container">
+        <div class="inner text-left">
+            {% if website.logo %}
+            <div class="row image">
+                <div class="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3">
+                    <img class="img-responsive" src="{{ image(website.logo).path() }}">
+                </div>
+            </div>
+            {% endif %}
+            {% if website.web_intro|length %}
+                {{ website.web_intro|raw }}
+            {% else %}
+                <p>{{ club.intro|raw }}</p>
+            {% endif %}
+            <div class="inline-btn three">
+                {% if club.documents().count() %}
+                <a class="btn btn-orange" href="#documents"><span class="icon document"></span>Documents</a>
+                {% endif %}
+                {% if events.count() %}
+                <a class="btn btn-orange" href="#events"><span class="icon calendar"></span>Club Events</a>
+                {% endif %}
+                {% if news.count() %}
+                <a class="btn btn-orange" href="#news"><span class="icon document"></span>Club News</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,15 @@
+{% extends "lwv.theme.laguna::layouts/default" %}
+
+{% block content %}
+    <div class="container error-500">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-8 col-md-push-2">
+                {{ image("theme::img/500.jpg").class('img-responsive')|raw }}
+                <div class="text-center">
+                    <h1 class="blue"><span class="bold">Error 500:</span> Server Error</h1>
+                    <a class="btn btn-orange arrow" href="/">Back To Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

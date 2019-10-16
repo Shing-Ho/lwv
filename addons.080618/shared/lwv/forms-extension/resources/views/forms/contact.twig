@@ -1,0 +1,99 @@
+<div class="form-wrapper">
+    <div class="alert alert-info confirmation hidden animated fadeIn">
+        {{ setting_value('lwv.extension.forms::contact_confirmation')|raw }}
+    </div>
+    {{ form_open({'id': 'contact', 'class': 'form contact ajax', 'url': form.options.url}) }}
+    <div class="form-section">
+        <div class="form-group interest">
+            <label>What Can We Help You With?</label>
+            {{ form.fields.interest.input|raw }}
+        </div>
+    </div>
+    <div class="form-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group first_name">
+                    <label>First Name*</label>
+                    {{ form.fields.first_name.input|raw }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group last_name">
+                    <label>Last Name*</label>
+                    {{ form.fields.last_name.input|raw }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group email">
+                    <label>Email*</label>
+                    {{ form.fields.email.input|raw }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group phone">
+                    <label>Phone*</label>
+                    {{ form.fields.phone.input|raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-section fields">
+        <!-- Trading Post -->
+        <div class="form-group manor hidden">
+            <label>Manor Number*</label>
+            {{ form.fields.manor.input|raw }}
+        </div>
+        <div class="form-group address hidden">
+            <label>Street Address*</label>
+            {{ form.fields.address.input|raw }}
+        </div>
+        <div class="form-group ad_phone hidden">
+            <label>Phone Number (To be read on-air)*</label>
+            {{ form.fields.ad_phone.input|raw }}
+        </div>
+        <div class="form-group ad_type hidden">
+            <label>Ad Type*</label>
+            {{ form.fields.ad_type.input|raw }}
+        </div>
+        <div class="form-group ad_description hidden">
+            <div>
+                <label>Ad Description To Be Read On-Air*</label>
+                {{ form.fields.ad_description.input|raw }}
+            </div>
+        </div>
+        <div class="form-group photos hidden">
+            <label>Photos</label>
+            {{ form.fields.photos.input|raw }}
+        </div>
+        <!-- Subscribe -->
+        <div class="form-group subscribe hidden">
+            <div>
+                <label>Which Updates Would You Like To Receive?*</label>
+                {{ form.fields.subscribe.input|raw }}
+            </div>
+        </div>
+        <!-- Media Services -->
+        <div class="form-group service hidden">
+            <label>Which Service Are You Interested In?*</label>
+            {{ form.fields.service.input|raw }}
+        </div>
+        <!-- General -->
+        <div class="form-group message">
+            <div>
+                <label>How Can We Help You?*</label>
+                {{ form.fields.message.input|raw }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group form-group-submit">
+        <button type="submit" class="btn btn-primary">
+            Submit
+        </button>
+    </div>
+    {{ form.fields.spam.input|raw }}
+    {{ form_close() }}
+</div>
+
+{{ form_json("contact") }}

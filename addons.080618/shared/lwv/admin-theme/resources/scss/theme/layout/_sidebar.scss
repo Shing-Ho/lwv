@@ -1,0 +1,94 @@
+#sidebar {
+    top: 70px;
+    bottom: 0;
+    width: 70px;
+    height: 100%;
+    z-index: 103;
+    margin-top: 0;
+    position: fixed;
+    overflow-x: scroll;
+    background: #252525;
+    padding-bottom: 70px;
+
+    -webkit-transition: width 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    -moz-transition: width 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    -ms-transition: width 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    -o-transition: width 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: width 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    > ul {
+        padding: 0;
+        margin-bottom: 70px;
+
+        > li {
+            width: 100%;
+
+            > a {
+                height: 100%;
+                margin: 8px 0;
+                display: block;
+                padding: 0 10px;
+                font-size: 18px;
+                line-height: 39px;
+                position: relative;
+                text-align: center;
+                white-space: nowrap;
+                color: rgba(255, 255, 255, 0.3);
+
+                span {
+                    display: none;
+                    margin-left: 8px;
+                }
+
+                &:hover {
+                    color: #eeeeee;
+                }
+            }
+
+            &.active {
+                box-sizing: border-box;
+                border-left: 3px solid #ffffff;
+
+                a {
+                    color: #eeeeee;
+                    background: #333333;
+                }
+            }
+        }
+    }
+}
+
+body.expand {
+    #sidebar {
+        width: 240px !important;
+
+        a {
+            text-align: left;
+            padding-left: 20px;
+
+            span {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    #sidebar {
+        width: 0;
+
+        -webkit-transition: none;
+        -moz-transition: none;
+        -ms-transition: none;
+        -o-transition: none;
+        transition: none;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    body.expand {
+        #sidebar {
+            width: 50% !important;
+        }
+    }
+}

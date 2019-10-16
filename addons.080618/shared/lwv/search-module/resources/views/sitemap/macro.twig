@@ -1,0 +1,16 @@
+{% macro tree(items, tree) %}
+    {% for item in items %}
+        <li data-id="{{ item.id }}">
+            {% for segment in item.segments %}
+                {% set page = segment.getEntry().getPresenter() %}
+                {% if page.enabled.value and page.searchable.value %}
+                    <a href="{{ page.path }}">{{ page.title }}</a>
+                    </span>
+                {% endif %}
+            {% endfor %}
+            <ul>
+                {{ _self.tree(tree.items.children(item), tree) }}
+            </ul>
+        </li>
+    {% endfor %}
+{% endmacro %}

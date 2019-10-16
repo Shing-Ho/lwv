@@ -1,0 +1,35 @@
+{% if not table.rows.empty() %}
+    {% block panel %}
+        <div>
+            <div class="table-responsive">
+                <table class="table">
+                    {% block body %}
+                        <tbody>
+                        {% for row in table.rows %}
+                            <tr id="{{ loop.index }}">
+
+                                {% for column in row.columns %}
+                                    <td class="{{ column.class }}" style="padding: 0;">
+                                        {{ column.value|raw }}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    {% endblock %}
+
+                </table>
+            </div>
+        </div>
+    {% endblock %}
+{% else %}
+
+    {% block no_results %}
+        <div class="{{ table.options.panel_class }}">
+            <div class="{{ table.options.panel_body_class }}">
+                {{ trans(table.options.get('no_results_message', 'streams::message.no_results')) }}
+            </div>
+        </div>
+    {% endblock %}
+
+{% endif %}

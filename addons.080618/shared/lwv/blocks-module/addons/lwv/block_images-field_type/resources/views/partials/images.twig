@@ -1,0 +1,36 @@
+<table class="table" data-sortable="">
+    <input type="hidden" value="{{ field_type.page.id }}" name="page">
+    {% for image in field_type.images %}
+        <tr>
+            <input type="hidden" value="{{ image.table }}|{{ image.id }}" name="action_to[]">
+            <td style="width: 30px;"><i class="fa fa-bars handle "></i><input type="hidden" value="1" name="order[]"></td>
+            <td>{% if image.image %}<img class="img-rounded" width="100" src="{{ image(image.image).path() }}" />{% else %}<i class="fa fa-chain-broken"></i>{% endif %}</td>
+            {% if image.title.value %}
+                <td>{{ image.title }}</td>
+            {% else %}
+                <td>{{ image.image.name }}</td>
+            {% endif %}
+
+            {% if image.image_layout.value %}
+                <td><i class="fa {{ image.icon() }}" style="margin-right: 5px;"></i> {{ image.image_layout.value }}</td>
+            {% endif %}
+
+            {% if image.size.value %}
+                <td>{{ image.size.value }}</td>
+            {% endif %}
+
+            <td>
+                <a class="btn btn-xs btn-warning" href="/admin/blocks/{{ field_type.extension.slug }}/image/edit/{{ image.id }}">
+                    <i class="fa fa-pencil"></i> Edit
+                </a>
+                <a href="/admin/blocks/{{ field_type.extension.slug }}/image/delete/{{ image.id }}" data-message="&lt;h3&gt;Are you sure you want to delete this image?&lt;/h3&gt;&lt;p&gt;This can not be undone.&lt;/p&gt;" data-toggle="confirm" class="btn btn-xs btn-danger">
+                    <i class="fa fa-trash "></i>
+                    Delete
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<small class="text-muted">
+    {{ trans('lwv.field_type.block_images::input.help') }}
+</small>

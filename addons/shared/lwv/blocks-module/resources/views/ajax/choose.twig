@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <button class="close" data-dismiss="modal">
+        <span>&times;</span>
+    </button>
+    <h4 class="modal-title">Choose a block type</h4>
+</div>
+
+<div class="modal-body">
+    {% if not types.isEmpty() %}
+        <ul class="nav nav-pills nav-stacked">
+            {% for type in types %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/blocks/{{ type.slug }}/create/{{ page }}">
+                        <strong>{{ trans(type.name) }}</strong>
+                        <br>
+                        <small>{{ trans(type.description) }}</small>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        No block type extensions are installed
+    {% endif %}
+</div>

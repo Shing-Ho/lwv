@@ -1,0 +1,60 @@
+<div class="filterable">
+    <div class="filters clearfix">
+        <h5 class="black">Filter Clubs</h5>
+        <div class="filter-group">
+            <a data-filter="general" class="btn btn-filter filter" href="#">General Interest</a>
+            <a data-filter="arts" class="btn btn-filter filter" href="#">Arts &amp; Crafts</a>
+            <a data-filter="cultural" class="btn btn-filter filter" href="#">Cultural</a>
+            <a data-filter="dance" class="btn btn-filter filter" href="#">Dance</a>
+            <a data-filter="games" class="btn btn-filter filter" href="#">Games</a>
+            <a data-filter="health" class="btn btn-filter filter" href="#">Health &amp; Wellness</a>
+            <a data-filter="performing" class="btn btn-filter filter" href="#">Performing Arts</a>
+            <a data-filter="political" class="btn btn-filter filter" href="#">Political</a>
+            <a data-filter="religious" class="btn btn-filter filter" href="#">Religious &amp; Spiritual</a>
+            <div class="clearfix visible-lg"></div>
+            <a data-filter="tech" class="btn btn-filter filter" href="#">Science &amp; Tech</a>
+            <a data-filter="fitness" class="btn btn-filter filter" href="#"><span class="hidden-xs">Sports &amp; </span>Fitness</a>
+            <a data-filter="support" class="btn btn-filter filter" href="#">Support Groups</a>
+
+            {% for entry in regex %}
+                <a data-filter="{{ entry.class }}" class="btn btn-filter filter" href="#">{{ entry.name }}</a>
+            {% endfor %}
+        </div>
+        <div class="clearfix"></div>
+        <a data-filter="*" class="btn btn-clear filter" href="#">Clear Filters</a>
+    </div>
+    <table class="filter-container">
+        <tr>
+            <th>Club</th>
+            <th>Contact</th>
+        </tr>
+        {% for entry in clubs %}
+            <tr class="filter-item {{ entry.category }} {{ alpha[entry.id] }}">
+                <td class="no-th">
+                    <i class="fa fa-group orange"></i>&nbsp;&nbsp;<b>{{ entry.title }}</b><br />
+                    {{ entry.description }}
+                </td>
+                <td data-th="CONTACT">
+                    {{ entry.contact|raw }}
+
+                    {% if entry.hosting == 'internal' and entry.website().first().enabled %}
+                        <br />
+                        <a class="btn btn-orange" style="margin-top: 5px;" title="View Website" href="{{ entry.microsite() }}">View Website</a>
+                    {% elseif entry.hosting == 'external' and entry.url|length %}
+                        <br />
+                        <a class="btn btn-orange" style="margin-top: 5px;" title="View Website" href="{{ entry.url }}" target="_blank">View Website</a>
+                    {% endif %}
+                </td>
+
+                {% if user().hasPermission('lwv.module.clubs::clubs.manage') %}
+                    <td>
+                        <a class="edit hidden-sm hidden-xs" href="/admin/clubs/edit/{{ entry.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="no-results">
+        <p><i class="fa fa-warning"></i>No rows match your search criteria.  Modify your filter criteria above or clear filters to start over.</p>
+    </div>
+</div>

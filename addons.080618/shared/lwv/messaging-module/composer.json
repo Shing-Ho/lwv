@@ -1,0 +1,27 @@
+{
+    "name": "lwv/messaging-module",
+    "type": "streams-addon",
+    "description": "Messaging Module.",
+    "keywords": [
+        "streams",
+        "module"
+    ],
+    "homepage": "http://www.lagunawoodsvillage.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan McDaniel",
+            "email": "ryan@itinnovative.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "ryan@itinnovative.com"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lwv\\MessagingModule\\": "src/",
+            "iContact\\": "vendor/iContact/src/"
+        }
+    }
+}

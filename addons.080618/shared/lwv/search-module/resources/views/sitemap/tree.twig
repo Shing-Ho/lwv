@@ -1,0 +1,10 @@
+{% import "lwv.module.search::sitemap/macro" as macro %}
+<div class="sitemap">
+{% block content %}
+    {% if not tree.items.empty() %}
+        <ul class="tree">
+            {{ macro.tree(tree.items.root(), tree) }}
+        </ul>
+    {% endif %}
+{% endblock %}
+</div>

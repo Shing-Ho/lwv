@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <button class="close" data-dismiss="modal">
+        <span>&times;</span>
+    </button>
+    <h4 class="modal-title">Applicant</h4>
+</div>
+
+<div class="modal-body">
+    <p>
+        <b>Name:</b> {{ applicant.name.value|length ? applicant.name : 'N/A' }}<br />
+        <b>Phone:</b> {{ applicant.phone.value|length ? applicant.phone : 'N/A' }}<br />
+        <b>Email:</b> {{ applicant.email.value|length ? applicant.email : 'N/A' }}<br />
+        {% if applicant.cover_letter|length %}
+        <b>Cover Letter:</b><br />
+        {{ applicant.cover_letter }}
+        <br />
+        {% endif %}
+        <br />
+        {% for attachment in applicant.attachments %}
+            <a class="btn btn-sm btn-info" href="/admin/files/view/{{ attachment.id }}" target="_blank" title="{{ attachment.title }}">
+                <i class="fa fa-file"></i> View Attachment
+            </a>
+        {% endfor %}
+    </p>
+    <hr>
+    <p>
+        <b>Job:</b> {{ job.title }}<br />
+        <b>Type:</b> {{ job.type }}<br />
+        <b>Department:</b> {{ job.department }}<br />
+        <b>Job Status:</b> {{ job.active.value ? 'Active' : 'Archived' }}<br />
+        <br />
+        <a class="btn btn-sm btn-info" href="/admin/careers/edit/{{ job.id }}" target="_blank">
+            <i class="fa fa-eye"></i> View Job
+        </a>
+    </p>
+</div>

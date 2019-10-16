@@ -1,0 +1,18 @@
+<div class="search-wrapper body">
+    <form action="{{ url('search') }}" method="get">
+        <input type="text" class="form-control" placeholder="{{ trans('theme::translations.search') }}..." name="q" value="{{ query.q }}"/>
+        <input type="hidden" name="type" value="{{ query.type }}"/>
+
+        {% if query.path %}
+            <input type="hidden" name="path" value="{{ query.path }}"/>
+        {% endif %}
+
+        {% if query.refer %}
+            <input type="hidden" name="refer" value="{{ query.refer }}"/>
+        {% endif %}
+        <button class="search-bar-icon" type="submit">
+            <i class="fa fa-search"></i>
+        </button>
+       
+    </form>
+</div>

@@ -1,0 +1,13 @@
+{% set id=random(10000) %}
+<div class="panel-group" id="accordion-{{ id }}">
+    {% for category in categories if category != 'Important Numbers'%}
+        <div class="panel">
+            <a class="btn btn-block collapsed" data-toggle="collapse" data-parent="#accordion-{{ id }}" href="#collapse{{ loop.index }}">{{ category }}<span class="arrow"></span></a>
+            <div id="collapse{{ loop.index }}" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {{ contact_category_table(category) }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

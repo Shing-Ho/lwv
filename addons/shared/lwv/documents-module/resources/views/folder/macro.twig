@@ -1,0 +1,24 @@
+{% macro contents(folder) %}
+    {% for child in folder.children().get() %}
+        {% if child.isEnabled() %}
+        <div class="sub">
+            <a class="folder collapsed" data-toggle="collapse" href="#collapse{{ child.id }}">{{ child.title }}</a>
+            <div id="collapse{{ child.id }}" class="collapse">
+                {{ _self.contents(child) }}
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+    {% for doc in folder.documents().get() %}
+        {% if not doc.private or user().hasPermission('lwv.module.documents::documents.private') %}
+            <div class="row">
+                <div class="col-xs-12">
+                    <a class="document {{ doc.document.type() }}" target="_blank" href="{{ doc.view() }}">{{ doc.title }}</a>
+                    {% if doc.granicus %}
+                        &nbsp;&mdash;&nbsp;&nbsp;<a class="video" href="{{ doc.granicus }}" target="_blank"><small><i class="fa fa-play-circle"></i>&nbsp;&nbsp;View Video</small></a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}

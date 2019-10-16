@@ -1,0 +1,25 @@
+{
+    "name": "lwv/documents-module",
+    "type": "streams-addon",
+    "keywords": [
+        "streams",
+        "module"
+    ],
+    "homepage": "http://www.lagunawoodsvillage.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan McDaniel",
+            "email": "ryan@itinnovative.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "ryan@itinnovative.com"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lwv\\DocumentsModule\\": "src/"
+        }
+    }
+}

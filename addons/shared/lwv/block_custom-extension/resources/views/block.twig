@@ -1,0 +1,8 @@
+<section id="{{ block.block_id }}" class="block block-custom">
+    {% if user().hasPermission('anomaly.module.pages::pages.write') %}
+            <a class="edit hidden-sm hidden-xs" href="/admin/blocks/{{ type.slug }}/edit/{{ block.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+    {% endif %}
+    <div class="container">
+        {{ block.body|raw }}
+    </div>
+</section>

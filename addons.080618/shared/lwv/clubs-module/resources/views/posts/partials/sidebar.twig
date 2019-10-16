@@ -1,0 +1,36 @@
+{% if sidebar.news %}
+<div class="sidebar-widget">
+    <h4>News Archive</h4>
+    <ul class="widget-archive">
+        {% for entry in sidebar.news %}
+            <li class="{{ entry.active ? 'active' }}">
+                <a class="toggle" href="#"></a>
+                <span>{{ entry.year }}</span>
+                <ul>
+                    {% for month in entry.months %}
+                        <li><a href="{{ club.microsite() }}/news/{{ entry.year }}/{{ month.month }}">{{ month.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% if sidebar.events %}
+<div class="sidebar-widget">
+    <h4>Events Archive</h4>
+    <ul class="widget-archive">
+        {% for entry in sidebar.events %}
+            <li class="{{ entry.active ? 'active' }}">
+                <a class="toggle" href="#"></a>
+                <span>{{ entry.year }}</span>
+                <ul>
+                    {% for month in entry.months %}
+                        <li><a href="{{ club.microsite() }}/events/{{ entry.year }}/{{ month.month }}">{{ month.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}

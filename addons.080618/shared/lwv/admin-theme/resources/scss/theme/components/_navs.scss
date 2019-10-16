@@ -1,0 +1,53 @@
+
+.nav {
+    &.nav-sections {
+        margin-bottom: 1em;
+        background-color: #eaeced;
+
+        li {
+            text-align: center;
+            display: inline-block;
+
+            a {
+                color: #8e9498;
+                display: block;
+                padding: 0.5em 2em;
+            }
+
+            &.active {
+                a {
+                    color: $gray;
+                    background: #ffffff;
+                }
+            }
+        }
+    }
+
+    &.nav-stacked {
+        li {
+            + li {
+                margin-top: 0.5em;
+            }
+        }
+    }
+
+    &.nav-pills {
+        .nav-item {
+            .nav-link {
+                color: $body-color;
+
+                &:hover {
+                    background: $gray-lighter;
+                }
+
+                small {
+                    color: $gray-light;
+                }
+            }
+        }
+    }
+}
+
+.tab-pane:not(.active) {
+    display: none;
+}

@@ -1,0 +1,31 @@
+<p>New job application received</p>
+<p>
+    <h3>Job Posting</h3>
+    <b>Job:</b> {{ job.title }}<br />
+    <b>Location:</b> {{ job.location }}<br />
+    <b>Department:</b> {{ job.department }}<br />
+    <b>Job Status:</b> {{ job.active.value ? 'Active' : 'Archived' }}<br />
+    <br />
+    <a href="{{ env('APP_URL') }}/admin/careers/edit/{{ job.id }}" target="_blank">View Job</a>
+</p>
+<hr>
+<p>
+    <h3>Applicant Information</h3>
+    <b>Name:</b> {{ applicant.name.value|length ? applicant.name : 'N/A' }}<br />
+    <b>Phone:</b> {{ applicant.phone.value|length ? applicant.phone : 'N/A' }}<br />
+    <b>Email:</b> {{ applicant.email.value|length ? applicant.email : 'N/A' }}<br />
+    {% if applicant.cover_letter|length %}
+        <h3>Cover Letter</h3>
+        {{ applicant.cover_letter|markdown }}
+        <br />
+    {% endif %}
+</p>
+<p>
+    {% if uploads|length %}
+        <h3>Attachments</h3>
+        {% for attachment in uploads %}
+            <a href="{{ attachment.url() }}" target="_blank">{{ attachment.title }}</a><br />
+        {% endfor %}
+    {% endif %}
+</p>
+<p>Sent from {{ request_ip() }}</p>

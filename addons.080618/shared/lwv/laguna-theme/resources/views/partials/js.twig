@@ -1,0 +1,5 @@
+{{ asset_add("scripts.js", "theme::js/theme/laguna.js") }}
+
+{% for script in asset_scripts("scripts.js",["parse"]) %}
+    {{ script|raw }}
+{% endfor %}

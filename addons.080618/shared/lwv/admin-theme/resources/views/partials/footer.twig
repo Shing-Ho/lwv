@@ -1,0 +1,29 @@
+<section id="footer">
+
+    <ul>
+        <li class="footprint">
+            {{ request_time() }} <span>|</span> {{ memory_usage() }}
+        </li>
+        <li class="version">
+            {{ config('streams::distribution.version') }}
+        </li>
+    </ul>
+
+    <!-- <ul class="pull-right">
+        <li class="language">
+            <select class="custom-select" onchange="window.location = '?_locale=' + this.value;">
+                {% for iso in config('streams::locales.supported')|keys %}
+                    <option value="{{ iso }}" {{ config('app.locale') == iso ? 'selected' }}>
+                        {{ trans('streams::locale.' ~ iso ~ '.name') }} ({{ iso }})
+                    </option>
+                {% endfor %}
+            </select>
+        </li>
+        <li class="help">
+            <a class="btn btn-danger" href="http://pyrocms.com/docs" target="_blank">
+                {{ icon('question-circle') }} {{ trans('lwv.theme.admin::control_panel.help') }}
+            </a>
+        </li>
+    </ul> -->
+
+</section>

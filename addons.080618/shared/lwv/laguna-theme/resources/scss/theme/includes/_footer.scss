@@ -1,0 +1,149 @@
+/**
+ * Footer styles
+ */
+#footer {
+  padding: 40px 2.5% 40px 2.5%;
+  background-color: $blue-light;
+  line-height: 1em;
+  font-size: 1em;
+
+  @include media('>=tablet') {
+    line-height: 0.9em;
+    font-size: 0.9em;
+  }
+
+  @include media('>=desktop') {
+    line-height: 0.85em;
+    font-size: 0.85em;
+  }
+
+  p, li {
+    color: $white;
+    text-transform: none;
+  }
+
+  h1,h2,h3,h4,h5 {
+    color: $blue-dark;
+  }
+
+  [class*="col-"] {
+    padding: 0;
+    margin: 0 0 30px 0;
+
+    @include media($mobile-breakpoint) {
+      margin: 0;
+      padding: 20px 0 20px 0;
+    }
+
+    &.border {
+      border-left: 3px solid $grey-light;
+    }
+  }
+
+  div.social {
+    @include media($mobile-breakpoint) {
+      float: right;
+
+      .flex-item {
+        text-align: center;
+      }
+    }
+  }
+
+  nav.social {
+    ul {
+      padding: 0;
+
+      li {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        display: inline-block;
+
+        &:before {
+          display: none;
+        }
+
+        a {
+          color: $white;
+          font-size: 2.250em;
+          line-height: 1em;
+        }
+
+        + li {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .navbar {
+    padding: 0;
+
+    @include media('>=desktop') {
+      padding: 0 0 0 35px;
+    }
+
+    ul.nav {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        position: relative;
+        display: block;
+        padding: 0;
+        margin: 0 0 15px;
+
+        &:before {
+          display: none;
+        }
+
+        @include media('>=tablet') {
+          width: 33.3%;
+          margin: 0 0 10px;
+        }
+
+        @include media('>=desktop') {
+          margin: 0 0 6px;
+          width: 50%;
+        }
+
+        @include media('>=widescreen') {
+          width: 33.3%;
+        }
+
+        + li {
+          border: none;
+        }
+
+        a {
+          position: relative;
+          display: inline-block;
+          color: $white;
+          padding: 0;
+          margin: 0;
+          text-transform: none;
+          text-decoration: none;
+
+          &:hover, &:focus {
+            text-decoration: none;
+            color: $blue-dark;
+            background-color: transparent;
+          }
+        }
+
+        &.current {
+          a {
+            color: $blue-dark;
+          }
+        }
+      }
+    }
+  }
+
+  #google_translate_element {
+    margin-top: 0.5em;
+  }
+}

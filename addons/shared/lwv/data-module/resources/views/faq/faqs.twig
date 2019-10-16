@@ -1,0 +1,18 @@
+<div class="filterable">
+    <div class="filters clearfix">
+        <div class="filter-group">
+            {% for category in categories %}
+                <a data-filter="category-{{ loop.index }}" class="btn btn-filter filter" href="#">{{ category }}</a>
+            {% endfor %}
+            <a data-filter="*" class="btn btn-clear filter" href="#">Clear Filters</a>
+        </div>
+    </div>
+    <div class="filter-container">
+        {% for category in categories %}
+            {{ faq_category(category,loop.index) }}
+        {% endfor %}
+    </div>
+
+</div>
+
+

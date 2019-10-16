@@ -1,0 +1,262 @@
+{
+  "General Inquiry": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Advertising": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Financial Services": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "General Managers Office": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Lost & Found": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Maintenance": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Media Inquiries": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Media Services": {
+    "fields": ["service"],
+    "required": ["first_name","last_name","email","phone","service"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "service": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Recreation & Amenities": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Reservations": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Resident Services": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Sales & Leasing": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Security Services": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Social Services": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Subscribe": {
+    "fields": ["subscribe"],
+    "required": ["first_name","last_name","email","subscribe"],
+    "footer": "subscribe",
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "phone",
+      "subscribe": "required"
+    },
+    "type": "subscribe",
+    "config": {
+      "subscribe": {
+        "news": "News & Events",
+        "minutes": "Agendas & Minutes",
+        "transportation": "Transportation"
+      }
+    }
+  },
+  "Suggestion Box": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  },
+  "Trading Post": {
+    "fields": ["first_name","last_name","email","phone","manor","address","ad_type","ad_phone","ad_description","photos"],
+    "required": ["first_name","last_name","email","phone","manor","address","ad_type","ad_phone","ad_description"],
+    "footer": "trading_post",
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "phone",
+      "manor": "required",
+      "address": "required",
+      "ad_type": "required",
+      "ad_phone": "required|phone",
+      "ad_description": "required"
+    },
+    "type": "email",
+    "template": "trading_post",
+    "config": {
+      "ad_type": {
+        "Vehicle For Sale": "Car, Golf Cart or Vehicle For Sale",
+        "Item For Sale": "Item(s) For Sale (3 items maximum)",
+        "Want To Buy": "Want To Buy",
+        "Free Item": "Free Item",
+        "Pet": "Pet",
+        "Rental": "Rental (Unit, Car Port, Etc. - Indicate \"For Rent\" or \"Want To Rent\" in ad description.)",
+        "Lost or Found": "Lost or Found (Indicate where item may have been lost)",
+        "Trade": "Trade (You have an item you with to trade.)",
+        "Estate Sale": "Estate Sale (List location & dates in ad description)"
+
+      }
+    }
+  },
+  "Transportation Services": {
+    "fields": ["message"],
+    "required": ["first_name","last_name","email","phone","message"],
+    "rules": {
+      "first_name": "required",
+      "last_name": "required",
+      "email": "required|email",
+      "phone": "required|phone",
+      "message": "required"
+    },
+    "type": "email",
+    "template": "contact"
+  }
+}

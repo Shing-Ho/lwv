@@ -1,0 +1,51 @@
+{% if settings.sidebar_categories and sidebar.categories %}
+<div class="sidebar-widget">
+    <h4>{{ trans('module::translations.categories') }}</h4>
+    <ul>
+    {% for category in sidebar.categories %}
+        <li>{{ html_link(category.path, category.name) }}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% if settings.sidebar_featured and sidebar.featured %}
+<div class="sidebar-widget">
+    <h4>{{ trans('module::translations.featured news') }}</h4>
+    <ul class="widget-post">
+        {% for post in sidebar.featured %}
+        <li>
+            <a class="widget-post-media" href="{{ post.news_link|length ? post.news_link : url(post.path)~'#post' }}" {% if post.news_link|length %}target="_blank"{% endif %}>
+                <img src="{{ image(post.news_image).fit(80,60).path() }}" />
+            </a>
+            <span class="widget-post-info">
+                <h5 class="post-title"><a href="{{ post.news_link|length ? post.news_link : url(post.path)~'#post' }}" {% if post.news_link|length %}target="_blank"{% endif %}>{{ post.title }}</a></h5>
+                <!-- <span class="post-meta">
+                    <span>{{ post.publish_at.format('F d, Y') }}</span>
+                </span> -->
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% if settings.sidebar_archive and sidebar.archive %}
+<div class="sidebar-widget">
+    <h4>{{ trans('module::translations.archives') }}</h4>
+
+    <ul class="widget-archive">
+        {% for entry in sidebar.archive %}
+            <li class="{{ entry.active ? 'active' }}">
+            <a class="toggle" href="#"></a>
+            <span>{{ entry.year }}</span>
+            <ul>
+                {% for month in entry.months %}
+                    <li><a href="/news/{{ entry.year }}/{{ month.month }}">{{ month.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}

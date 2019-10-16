@@ -1,0 +1,35 @@
+<!-- Meta -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<title>{{ trans('lwv.theme.admin::control_panel.title') }} &#8250; {{ trans(template.breadcrumbs.all()|keys|last)|raw }}</title>
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" href="{{ asset_path('lwv.theme.admin::img/favicons/favicon.png') }}" />
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600&amp;subset=latin-ext" rel="stylesheet">
+
+{#{{ asset_add("theme.css", "lwv.theme.admin::scss/flat-ui/flat-ui.scss") }}#}
+{{ asset_add("theme.css", "lwv.theme.admin::scss/fonts/fonts.scss", ["parse"]) }}
+{{ asset_add("theme.css", "lwv.theme.admin::scss/bootstrap/bootstrap.scss") }}
+{{ asset_add("build.css", "lwv.theme.admin::scss/theme/theme.scss") }}
+
+{{ asset_add("theme.js", "lwv.theme.admin::js/vendor/*") }}
+{{ asset_add("theme.js", "lwv.theme.admin::js/libraries/tether.min.js") }}
+{{ asset_add("theme.js", "lwv.theme.admin::js/libraries/*") }}
+{{ asset_add("theme.js", "lwv.theme.admin::js/theme/*") }}
+
+{{ asset_style("theme.css") }}
+{{ asset_style("build.css", ["live"]) }}
+
+{{ constants() }}
+
+{% for style in asset_styles("styles.css") %}
+    {{ style|raw }}
+{% endfor %}
+
+{{ asset_script("theme.js") }}

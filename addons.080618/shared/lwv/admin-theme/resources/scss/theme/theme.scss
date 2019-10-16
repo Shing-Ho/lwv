@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+// Bootstrap base styles
+@import "../bootstrap/bootstrap";
+
+// Utilities
+@import "_mixins";
+@import "_variables";
+
+// Layout
+@import "layout/main";
+@import "layout/menu";
+@import "layout/footer";
+@import "layout/topbar";
+@import "layout/buttons";
+@import "layout/sidebar";
+
+// Components
+@import "components/tags";
+@import "components/navs";
+@import "components/cards";
+@import "components/forms";
+@import "components/trees";
+@import "components/alerts";
+@import "components/tables";
+@import "components/modals";
+@import "components/loader";
+@import "components/buttons";
+@import "components/variants";
+@import "components/dropdowns";
+@import "components/scrollbar";
+@import "components/utilities";
+@import "components/pagination";
+@import "components/breadcrumb";
+@import "components/scaffolding";
+@import "components/input-group";
+@import "components/custom-forms";
+
+// Pages
+@import "pages/login";
+@import "pages/installer";
+
+// WYSIWYG Overrides
+.redactor-styles {
+  font-family: 'Source Sans Pro', sans-serif !important;
+  font-weight: 300 !important;
+  font-style: normal !important;
+  font-size: 19px !important;
+  letter-spacing: 0.5px !important;
+
+  table,
+  h1, h2, h3, h4, h5, h6,
+  p, ol, ul {
+    margin: 0 !important;
+  }
+
+  table, p, ol, ul {
+    + * {
+      margin-top: 20px !important;
+    }
+  }
+
+  h1, h2, h3, h4 {
+    + * {
+      margin-top: 10px !important;
+    }
+  }
+
+  p {
+    line-height: 2.3 !important;
+  }
+
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-weight: 400 !important;
+    text-transform: uppercase !important;
+    color: #ed864d !important;
+    line-height: 1 !important;
+
+    + h1, + h2, + h3, + h4, + h5, + h6 {
+      margin: 0 !important;
+    }
+  }
+
+  h1 {
+    font-size: 2.250em !important;
+  }
+
+  h2 {
+    font-size: 1.70em !important;
+  }
+
+  h3 {
+    font-size: 1.40em !important;
+  }
+
+  h4 {
+    font-size: 1.225em !important;
+  }
+
+  h5 {
+    font-size: 0.95em !important;
+  }
+
+  ol, ul {
+    margin-top: 5px !important;
+
+    li {
+      + li {
+        margin-top: 5px !important;
+      }
+    }
+  }
+
+  ul {
+    margin-left: 0px !important;
+    margin-top: 5px !important;
+    padding-left: 12px !important;
+    list-style: none !important;
+
+    li {
+      padding-left: 6px !important;
+
+      &:before {
+        content: "\2022" !important;
+        color: #61a4c0 !important;
+        display: inline-block !important;
+        width: 17px !important;
+        font-size: 25px !important;
+        margin-left: -17px !important;
+        margin-bottom: -2px !important;
+      }
+
+      ul {
+        li {
+          content: "\25E6" !important;
+        }
+      }
+    }
+  }
+}
+
+

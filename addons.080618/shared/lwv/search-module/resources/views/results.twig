@@ -1,0 +1,22 @@
+{% if query.type == "documents" %}
+    <div class="search-header">
+        <i class="fa fa-folder-open-o"></i>&nbsp;&nbsp;{{ query.path }}
+        {% if request_get("refer") %}
+        <a class="btn btn-primary" href="{{ request_get("refer") }}"><i class="fa fa-long-arrow-left"></i>Back</a>
+        {% endif %}
+    </div>
+{% endif %}
+
+{{ view("lwv.module.search::form", {"query": query}) }}
+<div class="search-results">
+    {% if query.q %}
+            <p class="count">
+                {{ count(results) }} results for "{{ query.q }}"
+            </p>
+    {% endif %}
+    {% if results|length %}
+            {% for result in results %}
+                {{ view("lwv.module.search::partials/result", {"result": result}) }}
+            {% endfor %}
+    {% endif %}
+</div>

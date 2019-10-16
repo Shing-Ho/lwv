@@ -1,0 +1,15 @@
+{% extends "lwv.theme.laguna::layouts/default" %}
+
+{% block content %}
+    <div class="container error-404">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-8 col-md-push-2">
+                {{ image("theme::img/404.jpg").class('img-responsive')|raw }}
+                <div class="text-center">
+                    <h1 class="blue"><span class="bold">Error 404:</span> Page Not Found</h1>
+                    <a class="btn btn-orange arrow" href="/">Back To Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,194 @@
+/**
+ * Form Elements
+ */
+textarea {
+  resize: none;
+}
+
+.form-section {
+  + .form-section {
+    margin-top: 25px;
+
+    @include media('>=desktop') {
+      margin-top: 40px;
+    }
+  }
+}
+
+.form-control {
+  height: 40px;
+}
+
+.form-control, .form-control:invalid, .form-control:active, .form-control:focus {
+  border: 1px solid $form-control-border;
+  border-radius: 0;
+  @include css3-prefix(box-shadow,none);
+  @include css3-prefix(outline,none);
+  @include css3-prefix(appearance,none);
+  font-size: 1em;
+}
+
+label {
+  margin: 0;
+  font-size: 1em;
+  font-weight: $font-weight-bold;
+  color: $black;
+
+  &.checkbox,
+  &.radio,
+  &.custom-radio,
+  &.custom-checkbox {
+    font-weight: $font-weight-light;
+  }
+
+  &.visibility-hidden {
+    visibility: hidden;
+  }
+
+  + *,
+  + .form-control {
+    margin-top: 5px;
+  }
+
+  &.radio {
+    margin-left: 20px;
+    display: inline-block;
+    margin-right: 40px;
+  }
+}
+
+* + .form-note {
+  margin-top: 28px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  margin: 2px 0 0;
+}
+
+label.checkbox-label {
+  font-size: .80em;
+  font-weight: normal;
+  font-style: italic;
+
+  input[type=checkbox]{
+    position: relative;
+    vertical-align: middle;
+    bottom: 1px;
+    margin-right: 10px;
+  }
+}
+
+.radio-inline,
+.checkbox-inline {
+  padding-left: 26px;
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-left: -26px;
+  }
+}
+
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
+  margin-left: 35px;
+}
+
+.checkbox-inline-options {
+  min-height: 35px;
+}
+
+input.form-error,
+textarea.form-error,
+.bootstrap-select.form-error button,
+.form-radio.form-error label {
+  border: 1px solid $blue !important;
+}
+
+small.form-alert,
+small.form-notice {
+  color: $blue;
+  font-size: 0.8em;
+}
+
+form {
+  .counter {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: $black;
+  }
+}
+
+.form-footer {
+  font-size: .80em;
+  font-weight: $font-weight-regular;
+  display: none;
+  margin-top: 25px;
+}
+
+.bootstrap-select {
+  margin-top: 5px;
+
+  .btn {
+
+    line-height: 1.8;
+  }
+
+  &.btn-group {
+    &:active, &:focus {
+      border: none;
+      outline: none;
+    }
+
+    .dropdown-toggle {
+      color: $black;
+      border: 1px solid $form-control-border;
+      background: none;
+      outline: none !important;
+      padding-right: 45px;
+
+      &:active, &:focus {
+        border: 1px solid $form-control-border !important;
+        outline: none !important;
+        background: none;
+      }
+
+      &.btn-default {
+        background: $grey-lightest none repeat scroll 0 0;
+      }
+
+      &:hover {
+        border: 1px solid $form-control-border;
+      }
+
+      .filter-option {
+        text-align: center;
+      }
+
+      .bs-caret {
+        .caret {
+          @include sprite(12px,21px,-64px,0);
+          border: 0;
+          margin-top: -3px;
+        }
+      }
+    }
+  }
+
+  .dropdown-menu {
+    margin: 5px 0 0;
+    @include css3-prefix('border-radius','0');
+    font-size: 1em;
+
+    > li > a {
+      padding: 7px 20px;
+    }
+
+    li {
+      padding-left: 0;
+
+      + li {
+        margin-top: 0;
+      }
+    }
+  }
+}

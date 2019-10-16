@@ -1,0 +1,32 @@
+{
+    "name": "lwv/laguna-theme",
+    "type": "streams-addon",
+    "description": "Laguna Woods Village Theme",
+    "keywords": [
+        "theme",
+        "streams theme",
+        "theme"
+    ],
+    "homepage": "http://www.lagunawoodsvillage.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan McDaniel",
+            "email": "ryan@itinnovative.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "ryan@itinnovative.com"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lwv\\LagunaTheme\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-1.0/master": "1.0.x-dev"
+        }
+    }
+}

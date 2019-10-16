@@ -1,0 +1,90 @@
+{% set animations = {'none' : '', 'fade' : 'wow fadeIn', 'right' : 'wow fadeInRight', 'left' : 'wow fadeInLeft', 'up' : 'wow fadeInUp'} %}
+
+{% macro modal(image) %}
+    <div id="modal-{{ image.id }}" class="modal slider-modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"><button type="button" class="close" data-dismiss="modal">×</button></div>
+                <div class="modal-body">
+                    {% if image.modal_image %}
+                        <img class="img-responsive header" src="{{ image(image.modal_image).resize(768).path() }}" />
+                    {% endif %}
+                    {{ image.modal_body|raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% import _self as macros %}
+
+<section id="{{ block.block_id }}" class="block block-slider">
+    {% if user().hasPermission('anomaly.module.pages::pages.write') %}
+        <a class="edit hidden-sm hidden-xs" href="/admin/blocks/{{ type.slug }}/edit/{{ block.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+    {% endif %}
+
+    <div class="container">
+        {% if block.body.value|length %}
+            <div class="intro">
+                {{ block.body|raw }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="carousel-container {{ attribute(animations,block.animation.key()) }} {{ block.width == "container" ? 'container' }}" data-wow-delay="0.1s" data-wow-offset="10">
+        <div class="carousel-items">
+            {% for image in block.images().get() %}
+                {% if image.image %}
+                    <div class="carousel-item">
+                        <div class="item-box {{ image.image_layout }}" >
+                            {% if user().hasPermission('anomaly.module.pages::pages.write') %}
+                                <a class="edit hidden-sm hidden-xs" href="/admin/blocks/{{ type.slug }}/image/edit/{{ image.id }}" target="_blank"><i class="fa fa-edit"></i></a>
+                            {% endif %}
+
+                            {% if image.image_layout in ['linked'] %}
+                                <a class="{{ image.image_layout }}" href="{{ image.link_url }}" target="{{ image.link_target }}">
+                                    <img class="item-container" src="{{ image(image.image).path() }}" />
+                                </a>
+                            {% elseif image.image_layout in ['video','lightbox'] %}
+                                <a class="{{ image.image_layout }}" data-title="{{ image.title }}" data-width="1280" data-toggle="lightbox" href="{{ image.image_layout == 'video' ? image.link_url : image(image.image).path() }}">
+                                    <img class="item-container" src="{{ image(image.image).path() }}" />
+                                </a>
+                            {% elseif image.image_layout == "text" %}
+                                <img class="item-container" src="{{ image(image.image).path() }}" />
+                                <div class="container text-center">
+                                    <div class="container-table">
+                                        <div class="container-cell">
+                                            {% if image.overlay|length %}
+                                                {{ image.overlay|raw }}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% elseif image.image_layout == "content" %}
+                                <a class="{{ image.image_layout }}" data-title="{{ image.title }}" data-toggle="modal" href="#modal-{{ image.id }}">
+                                    <img class="item-container" src="{{ image(image.image).path() }}" />
+                                </a>
+                            {% else %}
+                                <div class="{{ image.image_layout }}">
+                                    <img class="item-container" src="{{ image(image.image).path() }}" />
+                                </div>
+                            {% endif %}
+                        </div>
+                        {% if image.body|length %}
+                            <div class="item-caption">
+                                {{ image.body|raw }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% for image in block.images().get() %}
+        {% if image.image_layout in ['content'] %}
+            {{ macros.modal(image) }}
+        {% endif %}
+    {% endfor %}
+
+    {% include "lwv.extension.block_slider::partials/js" %}
+</section>
