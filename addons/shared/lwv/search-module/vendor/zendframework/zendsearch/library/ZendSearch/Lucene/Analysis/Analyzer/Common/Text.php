@@ -39,7 +39,7 @@ class Text extends AbstractCommon
 
         // convert input into ascii
         if (PHP_OS != 'AIX') {
-            $this->_input = iconv($this->_encoding, 'ASCII//TRANSLIT', $this->_input);
+            $this->_input = iconv($this->_encoding, 'ASCII//IGNORE', $this->_input);
         }
         $this->_encoding = 'ASCII';
     }

@@ -174,7 +174,8 @@ class SegmentMerger
                     $fieldNum = $fdtFile->readVInt();
                     $bits = $fdtFile->readByte();
                     $fieldInfo = $segmentInfo->getField($fieldNum);
-
+                    if(!$fieldInfo)
+                        continue;
                     if (!($bits & 2)) { // Text data
                         $storedFields[] =
                                  new Document\Field($fieldInfo->name,

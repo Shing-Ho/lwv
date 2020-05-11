@@ -29,6 +29,6 @@ class IndexPost
     public function handle(Client $client)
     {
         $url = env('APP_URL').'/search/index/'.$this->post->getStream()->namespace.'/'.$this->post->getStream()->slug.'/'.$this->post->str_id;
-        $client->request('GET', rtrim($url,'/'));
+        $result = $client->request('GET', rtrim($url,'/'));
     }
 }

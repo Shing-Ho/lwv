@@ -37,11 +37,17 @@ class TextNum extends AbstractCommon
             return;
         }
 
+        if($this->_encoding == "UTF-8")
+        {
+            $this->_input = mb_convert_encoding($this->_input, 'UTF-8', 'UTF-8');    
+        }
+
+
         // convert input into ascii
         if (PHP_OS != 'AIX') {
-            $this->_input = iconv($this->_encoding, 'ASCII//TRANSLIT', $this->_input);
+            $this->_input = iconv(mb_detect_encoding($this->_input, mb_detect_order(), false), 'UTF-8//IGNORE', $this->_input);
         }
-        $this->_encoding = 'ASCII';
+        $this->_encoding = 'UTF-8';
     }
 
     /**

@@ -16,7 +16,7 @@ use ZendSearch\Lucene\Exception\OutOfRangeException;
 use ZendSearch\Lucene\Exception\RuntimeException;
 use ZendSearch\Lucene\Search\Similarity\AbstractSimilarity;
 use ZendSearch\Lucene\Storage\Directory;
-
+use \Exception as Exception;
 /**
  * @category   Zend
  * @package    Zend_Search_Lucene
@@ -673,8 +673,13 @@ class Index implements SearchIndexInterface
         $topScore = 0;
 
         $resultSetLimit = Lucene::getResultSetLimit();
-        foreach ($query->matchedDocs() as $id => $num) {
-            $docScore = $query->score($id, $this);
+        foreach ($query->matchedDocs() as $id => $num) { // make try catch
+            try{
+                $docScore = $query->score($id, $this);
+            } catch(Exception $e){
+                // error_log($id);
+                continue;
+            }
             if( $docScore != 0 ) {
                 $hit = new Search\QueryHit($this);
                 $hit->document_id = $hit->id = $id;
@@ -683,7 +688,9 @@ class Index implements SearchIndexInterface
                 $hits[]   = $hit;
                 $ids[]    = $id;
                 $scores[] = $docScore;
-
+                /*error_log(json_encode($hits));
+                error_log($topScore);
+                error_log($docScore);*/
                 if ($docScore > $topScore) {
                     $topScore = $docScore;
                 }
@@ -704,7 +711,6 @@ class Index implements SearchIndexInterface
                 $hit->score /= $topScore;
             }
         }
-
         if (func_num_args() == 1) {
             // sort by scores
             array_multisort($scores, SORT_DESC, SORT_NUMERIC,
@@ -796,7 +802,6 @@ class Index implements SearchIndexInterface
             // Do sort
             call_user_func_array('array_multisort', $sortArgs);
         }
-
         return $hits;
     }
 

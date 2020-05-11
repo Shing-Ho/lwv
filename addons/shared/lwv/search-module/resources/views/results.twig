@@ -29,13 +29,13 @@
       <thead>
       <tr>
         
-        <th colspan="2" class="head-search" > All results ({{ inf.news_count
+        <th colspan="2"  class="head-search" ><a href="/search?q={{query.q}}" style="color:white;"> All results ({{ inf.news_count
                                                               +inf.amenities_count
                                                               +inf.residents_count
                                                               +inf.events_count
                                                               +inf.document_count
                                                               +inf.others_count
-                                                           }}) </th>
+                                                           }})</a> </th>
       </tr>
     </thead>
     <tbody>
@@ -90,12 +90,7 @@
     {% endif %}
     {% if results|length %}
       <div class="col-md-12">
-                <p class="pagecounts-up"> SHOWING  {{ count(results) }} of {{ inf.news_count
-                                                              +inf.amenities_count
-                                                              +inf.residents_count
-                                                              +inf.events_count
-                                                              +inf.document_count
-                                                              +inf.others_count
+                <p class="pagecounts-up"> SHOWING  {{ count(results) }} of {{ inf.total
                                                            }}  </p> <br/>  
                                                           </div>
             {% for result in results %}
@@ -110,12 +105,7 @@
     {% endif %}
      <div class="box-footer clearfix">
       <div class="col-md-3">
-              <span class="pagecounts"> SHOWING  {{ count(results) }} of {{ inf.news_count
-                                                              +inf.amenities_count
-                                                              +inf.residents_count
-                                                              +inf.events_count
-                                                              +inf.document_count
-                                                              +inf.others_count
+              <span class="pagecounts"> SHOWING  {{ count(results) }} of {{ inf.total
                                                            }}  </span>
                                                            </div>
                                                             <div class="col-md-9">
@@ -246,13 +236,14 @@ ul.pagination li.page-item {
  
 <script> 
     var search="{{query.q}}";
+    var category="{{query.category}}";
     $('.pagination').twbsPagination({
     totalPages: Math.ceil("{{pages.total/10}}"),
     startPage:parseInt("{{pages.currentPage}}"),
     initiateStartPageClick:false,
         visiblePages: 6,
         onPageClick: function (event, page) { 
-        location.href='/search?q='+search+'&page='+page;
+        location.href=(category =='' ? ('/search?q='+search+'&page='+page) : ('/search?q='+search+'&category='+category+'&page='+page));
         currentpage = page;
       }
     });

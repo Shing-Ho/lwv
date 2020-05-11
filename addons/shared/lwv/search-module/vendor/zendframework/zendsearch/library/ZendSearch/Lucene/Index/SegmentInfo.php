@@ -613,7 +613,8 @@ class SegmentInfo implements TermsStreamInterface
      */
     public function getField($fieldNum)
     {
-        return $this->_fields[$fieldNum];
+        if(isset($this->_fields[$fieldNum]))
+            return $this->_fields[$fieldNum];   
     }
 
     /**

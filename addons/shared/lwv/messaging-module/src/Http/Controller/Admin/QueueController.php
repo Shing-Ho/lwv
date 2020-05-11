@@ -100,6 +100,6 @@ class QueueController extends AdminController
                     'message' => serialize($email),
                 ]
             );
-        dd($message);
+        //dd($message);
     }
 }

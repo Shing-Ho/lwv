@@ -82,7 +82,7 @@ class ProcessQueue extends Command
 
         $this->info('Processing subscribe messages in the message queue');
         $messages = $queueModel->where('type','subscribe')->where('processed',false)->get();
-
+        $this->info('Message:'.$queueModel);
         $this->output->progressStart($messages->count());
 
         foreach ($messages as $message) {
@@ -128,10 +128,9 @@ class ProcessQueue extends Command
                 $map[$key] = $results[array_search($val,array_column($results,'listId'))];
             } else {
                 $this->error('iContact List - '.$val.' not found');
-                exit;
+                ///exit;
             }
         }
-
         return $map;
     }
 

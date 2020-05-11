@@ -175,36 +175,33 @@ class Zend extends \Mmanos\Search\Index
 	 */
 	public function runQuery($query, array $options = array())
 	{
-        $response = $this->getIndex()->find($query);
-
+		$response = $this->getIndex()->find($query);
 		$this->stored_query_totals[md5(serialize($query))] = count($response);
 
 		$results = array();
 
 		if (!empty($response)) {
-			foreach ($response as $hit) {
+				foreach ($response as $hit) {
 				$fields = array(
 						'id'     => $hit->xref_id,
 						'_score' => $hit->score,
 				);
-				
 				foreach ($hit->getDocument()->getFieldNames() as $name) {
 					if ($name == 'xref_id') continue;
 					
 					$fields[$name] = $hit->getDocument()->getFieldValue($name);
 				}
-				
-				$results[] = array_merge(
-					$fields,
-					json_decode(base64_decode($hit->_parameters), true)
-				);
+				if(json_decode(base64_decode($hit->_parameters), true) !== null)	
+					$results[] = array_merge(
+						$fields,
+						json_decode(base64_decode($hit->_parameters), true)
+					);
 			}
 		}
 		
 		if (isset($options['limit']) && isset($options['offset'])) {
 			$results = array_slice($results, $options['offset'], $options['limit']);
 		}
-		
 		return $results;
 	}
 	

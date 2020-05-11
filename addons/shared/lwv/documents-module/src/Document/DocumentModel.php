@@ -11,7 +11,7 @@ class DocumentModel extends DocumentsDocumentsEntryModel implements DocumentInte
     }
 
     public function getDocumentText() {
-        $util = '/usr/bin/pdftotext';
+        $util = '/usr/local/bin/pdftotext';
 
         if (!file_exists($util)) {
             abort(500,'Executeable /usr/bin/pdftotext not found');

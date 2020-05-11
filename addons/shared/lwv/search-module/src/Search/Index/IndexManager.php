@@ -58,11 +58,9 @@ class IndexManager
     public function insert($entry)
     {
         $this->search->index($this->index)->delete(array_get($entry, 'id'));
-
         if (array_get($entry, 'enabled', true) === false) {
             return;
         }
-
         $this->search->index($this->index)->insert(
             array_get($entry, 'id'),
             array_get($entry, 'fields'),

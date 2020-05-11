@@ -63,9 +63,10 @@ class Refresh extends Command
             $this->info('Indexing Pages');
 
             $entries = $pages->all()->filter(function ($item) use ($search) {
-                // Only pages that are enabled and searchable
+                // Only pages that are enabled and 
                 if ($item->isEnabled() && $item->getEntry()->searchable) {
                     // Only pages with missing index entries
+                    //$this->info('Index item:'.$item->slug.', Enabled:'.$item->isEnabled().' searchable:'.$item->getEntry()->searchable.' , Missing:'.count($search->search('page',$item->id)->get()));
                     if (!count($search->search('page',$item->id)->get())) {
                         return $item;
                     }

@@ -1,5 +1,5 @@
 <div class="result {{ result.type }}">
     <a class="title" target="{{ result.type == "document" ? '_blank' : '_self'}}" href="{{ result.link }}">{{ result.title | raw }}</a>
-    <p class="excerpt">{{ result.excerpt|raw }}</p> 
     <p class="excerpt-link" ><a href="{{ result.link }}" target ="_blank"> {{url()}}{{ result.link }} </a></p>
+    <p class="excerpt"><span style="color:gray">{{result.date}}</span> - {{ result.excerpt|raw }}</p> 
 </div>
